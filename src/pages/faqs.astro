@@ -1,0 +1,69 @@
+---
+import { u } from '@/lib/url';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import FaqList from '@/components/FaqList.astro';
+import Icon from '@/components/Icon.astro';
+import { faqs, designFaqs } from '@/data/site';
+
+const groups = [
+  { id: 'general', title: 'Sobre Z4YLON y sus shows', items: faqs },
+  { id: 'logos', title: 'Diseño de logos', items: designFaqs.logos },
+  { id: 'visuales', title: 'Visuales para shows', items: designFaqs.visuales },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: groups.flatMap((g) =>
+    g.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.join(' ') } })),
+  ),
+};
+---
+
+<Base title="Preguntas frecuentes" description="Todo sobre Z4YLON: quién es, qué música pincha, cómo contratarle, dónde actúa, con qué equipo trabaja y cómo encargar logos y visuales." jsonLd={faqLd}>
+  <PageHero
+    eyebrow="FAQs"
+    title="Preguntas <span class='accent'>frecuentes</span>"
+    lead="Respuestas rápidas sobre los shows, la contratación y los servicios de diseño."
+    sections={groups.map((g) => ({ href: `#${g.id}`, label: g.title }))}
+  />
+
+  <div class="section">
+    <div class="container--narrow faqs">
+      {
+        groups.map((g) => (
+          <section id={g.id} aria-labelledby={`${g.id}-title`}>
+            <h2 class="h2" id={`${g.id}-title`}>
+              {g.title}
+            </h2>
+            <FaqList items={g.items} />
+          </section>
+        ))
+      }
+
+      <div class="still card">
+        <h2 class="h3">¿No encuentras tu respuesta?</h2>
+        <p class="muted">Escribe directamente y te responderemos lo antes posible.</p>
+        <a class="btn" href={u('/contacto')}>Contactar <Icon name="arrowRight" /></a>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .faqs {
+    display: grid;
+    gap: var(--space-xl);
+  }
+  .faqs section {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .still {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+</style>

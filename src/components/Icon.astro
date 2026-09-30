@@ -1,0 +1,50 @@
+---
+import { uiIcons, type UiIcon } from '@/lib/icons';
+import { siInstagram, siTiktok, siTwitch, siX, siSpotify, siFacebook, siMixcloud, siSoundcloud, siWhatsapp, siBandsintown } from 'simple-icons';
+
+const brand = {
+  instagram: siInstagram,
+  tiktok: siTiktok,
+  twitch: siTwitch,
+  x: siX,
+  spotify: siSpotify,
+  facebook: siFacebook,
+  mixcloud: siMixcloud,
+  soundcloud: siSoundcloud,
+  whatsapp: siWhatsapp,
+  bandsintown: siBandsintown,
+};
+export type BrandIcon = keyof typeof brand;
+
+interface Props {
+  name: UiIcon | BrandIcon;
+  size?: number | string;
+  class?: string;
+  label?: string;
+}
+const { name, size = 20, class: className, label } = Astro.props;
+const b = (brand as Record<string, { path: string }>)[name];
+const a11y: Record<string, string> = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true', focusable: 'false' };
+---
+
+{
+  b ? (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" class={className} {...a11y}>
+      <path d={b.path} />
+    </svg>
+  ) : (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      {...a11y}
+      set:html={uiIcons[name as UiIcon]}
+    />
+  )
+}

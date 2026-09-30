@@ -1,0 +1,309 @@
+---
+import { u } from '@/lib/url';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import FaqList from '@/components/FaqList.astro';
+import Icon from '@/components/Icon.astro';
+import BookingForm from '@/components/react/BookingForm';
+import { site, socials, contactRoles, process, faqs } from '@/data/site';
+import { img } from '@/lib/media';
+
+const channels = [
+  { icon: 'mail', label: 'Email', value: site.email, href: `mailto:${site.email}`, note: 'Trato profesional y presupuestos' },
+  { icon: 'whatsapp', label: 'WhatsApp', value: site.phone, href: site.whatsapp, note: 'Respuesta rápida', external: true },
+  { icon: 'phone', label: 'Teléfono', value: site.phone, href: `tel:${site.phoneHref}`, note: 'Llamadas' },
+  { icon: 'instagram', label: 'Instagram', value: site.instagramHandle, href: socials[0].href, note: 'Trato cercano por DM', external: true },
+] as const;
+
+const quickFaqs = faqs.filter((f) => /contratar|prepara|dónde realiza|marketing/i.test(f.q));
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined;
+---
+
+<Base title="Contacto y contratación" description="Contrata a Z4YLON para tu club, festival, boda o evento privado, o solicita servicios de diseño gráfico. Formulario, email, WhatsApp e Instagram.">
+  <PageHero
+    eyebrow="Contacto"
+    title="Contrata a <span class='accent'>Z4YLON</span>"
+    lead="Contrata sus servicios o consulta cualquier duda o sugerencia. Contrato y condiciones bajo solicitud directa."
+    image={img('home/home-05.jpeg')}
+    imagePosition="center 30%"
+  />
+
+  <section class="section" aria-labelledby="form-title">
+    <div class="container contact">
+      <aside class="contact__side" aria-labelledby="channels-title">
+        <h2 class="h3" id="channels-title">Contacto directo</h2>
+        <ul role="list" class="channels">
+          {
+            channels.map((c) => (
+              <li>
+                <a href={c.href} {...('external' in c ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  <span class="channels__icon">
+                    <Icon name={c.icon} size={20} />
+                  </span>
+                  <span class="channels__text">
+                    <span class="channels__label">{c.label}</span>
+                    <strong>{c.value}</strong>
+                    <span class="muted">{c.note}</span>
+                  </span>
+                  <Icon name="arrowUpRight" size={18} />
+                  {'external' in c && <span class="sr-only"> (nueva pestaña)</span>}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="dossier-box">
+          <Icon name="file" size={22} />
+          <p>¿Eres promotor? Consulta antes el <a href={u('/press-kit#dossier')}>dossier y el rider técnico</a>.</p>
+        </div>
+      </aside>
+
+      <div class="contact__form card">
+        <p class="eyebrow">Formulario</p>
+        <h2 class="h2" id="form-title">¿Qué necesitas?</h2>
+        <BookingForm client:load email={site.email} roles={contactRoles} endpoint={endpoint} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="process-title">
+    <div class="container">
+      <SectionHeader eyebrow="Cómo trabaja" title="De la primera llamada al post-show" id="process-title" />
+      <ol role="list" class="process">
+        {
+          process.map((p, i) => (
+            <li data-reveal style={`--delay:${i * 60}ms`}>
+              <span class="process__n">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="process__title">{p.title}</h3>
+              <p>{p.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="faq-title">
+    <div class="container faq-grid">
+      <div>
+        <SectionHeader eyebrow="FAQs" title="¿Quieres saber más?" id="faq-title" lead="Accede a cualquier duda ya resuelta." />
+        <a class="btn btn--ghost" href={u('/faqs')}>Ver todas las FAQs <Icon name="arrowRight" /></a>
+      </div>
+      <FaqList items={quickFaqs} />
+    </div>
+  </section>
+
+  <section class="section section--tight" id="novedades" aria-labelledby="news-title">
+    <div class="container">
+      <div class="news" data-reveal>
+        <div>
+          <p class="eyebrow">Novedades</p>
+          <h2 class="h2" id="news-title">Sé el primero en enterarte</h2>
+          <p class="lead">Suscríbete a los avisos de Bandsintown para recibir por email y en el móvil cada nuevo evento, y sigue a Z4YLON en redes.</p>
+        </div>
+        <div class="news__actions">
+          <a class="btn" href={site.bandsintown} target="_blank" rel="noopener noreferrer"><Icon name="bandsintown" /> Seguir en Bandsintown<span class="sr-only"> (nueva pestaña)</span></a>
+          <ul role="list" class="social-row" aria-label="Redes sociales">
+            {
+              socials.map((s) => (
+                <li>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.label} (nueva pestaña)`}>
+                    <Icon name={s.id} size={20} />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+    gap: var(--space-l);
+    align-items: start;
+  }
+  .contact__side {
+    display: grid;
+    gap: 1.25rem;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+  .channels {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .channels a {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--muted);
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      color 0.2s;
+  }
+  .channels a:hover {
+    border-color: var(--brand-hi);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .channels__icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--brand-900);
+    color: #ffd3de;
+  }
+  .channels__text {
+    display: grid;
+    line-height: 1.3;
+    min-width: 0;
+  }
+  .channels__text strong {
+    color: var(--text);
+    font-size: clamp(0.88rem, 3.6vw, 1rem);
+    overflow-wrap: anywhere;
+  }
+  .channels__label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-hi);
+  }
+  .channels__text .muted {
+    font-size: 0.85rem;
+  }
+  .dossier-box {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text-2);
+    font-size: 0.92rem;
+  }
+  .dossier-box :global(svg) {
+    flex: none;
+    color: var(--brand-hi);
+  }
+  .contact__form {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    display: grid;
+    gap: 1rem;
+  }
+  .process {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    counter-reset: step;
+  }
+  .process li {
+    position: relative;
+    display: grid;
+    gap: 0.6rem;
+    align-content: start;
+    padding: 1.5rem 1.25rem 1.5rem 0;
+    border-top: 1px solid var(--line-strong);
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+  .process li::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 4px rgb(212 18 74 / 0.25);
+  }
+  .process__n {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--brand-hi);
+  }
+  .process__title {
+    font-size: var(--step-1);
+    color: var(--text);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+    gap: var(--space-l);
+    align-items: start;
+  }
+  .news {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-l);
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(60% 80% at 100% 0%, rgb(212 18 74 / 0.2), transparent 70%),
+      var(--bg-2);
+  }
+  .news > div:first-child {
+    display: grid;
+    gap: 1rem;
+  }
+  .news__actions {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+  }
+  @media (max-width: 1000px) {
+    .process {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 860px) {
+    .contact,
+    .faq-grid,
+    .news {
+      grid-template-columns: 1fr;
+    }
+    .contact__side {
+      position: relative;
+      top: 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .channels a {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+    .channels a > :global(svg:last-of-type) {
+      display: none;
+    }
+  }
+  @media (max-width: 560px) {
+    .process {
+      grid-template-columns: 1fr;
+    }
+    .process li {
+      padding-left: 1.5rem;
+      border-top: 0;
+      border-left: 1px solid var(--line-strong);
+    }
+    .process li::before {
+      left: -5px;
+      top: 1.7rem;
+    }
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+import { u } from '@/lib/url';
+import '@/styles/global.css';
+import '@/styles/components.css';
+import { ClientRouter } from 'astro:transitions';
+import { getImage } from 'astro:assets';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import MixPlayer from '@/components/react/MixPlayer';
+import { site, sessions, socials } from '@/data/site';
+import { img } from '@/lib/media';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  /** Datos estructurados adicionales (schema.org) */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  heroOverlap?: boolean;
+}
+
+const { title, description = site.description, image = '/og.jpg', jsonLd, heroOverlap = false } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : site.title;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+const ogImage = new URL(u(image), Astro.site);
+
+const covers = { afro: 'music/mc-afro-2026.jpg', techbass: 'music/mc-techbass-2023.jpg', zoewie: 'music/mc-zoewie-2018.jpg' } as const;
+const playerSessions = await Promise.all(
+  sessions.map(async (x) => ({
+    key: x.key,
+    title: x.title,
+    edition: x.edition,
+    seconds: x.seconds,
+    cover: (await getImage({ src: img(covers[x.cover]), width: 112, format: 'webp' })).src,
+  })),
+);
+
+const artistLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  alternateName: 'Z4YLON DJ',
+  jobTitle: ['DJ', 'Showman', 'Diseñador gráfico'],
+  url: Astro.site?.href,
+  image: ogImage.href,
+  email: `mailto:${site.email}`,
+  telephone: site.phone,
+  address: { '@type': 'PostalAddress', addressLocality: 'Córdoba', addressCountry: 'ES' },
+  sameAs: socials.map((s) => s.href),
+};
+const ld = [artistLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])];
+---
+
+<!doctype html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#07070a" />
+    <meta name="color-scheme" content="dark" />
+    {import.meta.env.PUBLIC_NOINDEX === 'true' && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href={u('/favicon.png')} type="image/png" />
+    <link rel="apple-touch-icon" href={u('/apple-touch-icon.png')} />
+    <link rel="manifest" href={u('/manifest.webmanifest')} />
+    <link rel="sitemap" href={u('/sitemap-index.xml')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@z4ylon" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+
+    <ClientRouter fallback="swap" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body data-hero-overlap={heroOverlap || undefined}>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <Header overlap={heroOverlap} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <MixPlayer client:load sessions={playerSessions} transition:persist="mix-player" />
+
+    <script>
+      // Revelado al hacer scroll y contadores animados. Se re-ejecuta en cada navegación.
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+      function reveal() {
+        const els = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-visible)');
+        if (!('IntersectionObserver' in window) || reduce.matches) {
+          els.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+
+      function counters() {
+        const els = document.querySelectorAll<HTMLElement>('[data-count]');
+        const run = (el: HTMLElement) => {
+          const to = Number(el.dataset.count);
+          if (reduce.matches) return;
+          const start = performance.now();
+          const dur = 1400;
+          const fmt = new Intl.NumberFormat('es-ES');
+          const tick = (t: number) => {
+            const p = Math.min(1, (t - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 4);
+            el.textContent = fmt.format(Math.round(to * eased));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              run(e.target as HTMLElement);
+              io.unobserve(e.target);
+            }
+          }
+        });
+        els.forEach((el) => io.observe(el));
+      }
+
+      // El router sustituye los atributos de <html> al navegar: se restaura la marca de JS
+      document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('js'));
+
+      document.addEventListener('astro:page-load', () => {
+        reveal();
+        counters();
+      });
+    </script>
+  </body>
+</html>

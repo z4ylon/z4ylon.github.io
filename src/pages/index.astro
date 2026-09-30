@@ -1,0 +1,789 @@
+---
+import { u } from '@/lib/url';
+import { Image, Picture, getImage } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icon.astro';
+import Marquee from '@/components/Marquee.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import AmbientVideo from '@/components/react/AmbientVideo';
+import ShowsExplorer from '@/components/react/ShowsExplorer';
+import MediaGallery from '@/components/react/MediaGallery';
+import PlaySessionButton from '@/components/react/PlaySessionButton';
+import { site, genres, stats, bio, highlights, sharedLineup, services, sessions, venues } from '@/data/site';
+import { getEvents, upcomingUrl } from '@/lib/events';
+import { img, videoItem } from '@/lib/media';
+import { formatDuration } from '@/lib/player';
+import { parts, privateInfo } from '@/lib/format';
+import logo from '@/assets/brand/logo-full.png';
+import heroPhoto from '@/assets/presskit/photo-2026.jpg';
+import smokePoster from '@/assets/posters/bg-smoke.jpg';
+import coverAfro from '@/assets/music/mc-afro-2026.jpg';
+
+const events = await getEvents();
+const next = events.upcoming[0];
+const nextPriv = next ? privateInfo(next.title) : null;
+const nextLabel = next ? (nextPriv ? `Evento privado · ${nextPriv.place ?? next.city}` : `${next.venue} · ${next.city}`) : '';
+const poster = await getImage({ src: smokePoster, width: 1280, format: 'webp' });
+
+const liveCaptions: Record<number, string> = {
+  1: 'Holi Colours Festival · Ciudad Real',
+  8: 'Holi Colours Festival · Ciudad Real',
+  9: 'Holi Colours Festival · Ciudad Real',
+  10: 'Holi Colours Festival · Ciudad Real',
+  13: 'Holi Colours Festival · Ciudad Real',
+};
+const live = await Promise.all(
+  Array.from({ length: 15 }, (_, i) => {
+    const n = i + 1;
+    const cap = liveCaptions[n];
+    return videoItem(`live-${String(n).padStart(2, '0')}`, 'live', cap ? `Vídeo en directo de Z4YLON en ${cap}` : `Vídeo en directo de Z4YLON: pista llena durante un show (clip ${n})`, cap);
+  }),
+);
+
+const latest = sessions[0];
+const collage = [
+  { src: img('home/home-02.jpeg'), alt: 'Z4YLON mezclando en una Denon Prime 4 iluminada en azul' },
+  { src: img('home/home-07.jpeg'), alt: 'Z4YLON celebrando con el público en un festival nocturno' },
+  { src: img('home/home-04.jpg'), alt: 'Escenario del Holi Colours Festival con Z4YLON en cabina' },
+];
+---
+
+<Base heroOverlap>
+  <!-- HERO -->
+  <section class="hero grain" aria-labelledby="hero-title">
+    <div class="hero__media">
+      <AmbientVideo client:load src={u('/media/hero/bg-smoke.mp4')} poster={poster.src} className="hero__video" />
+    </div>
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow">{site.tagline}</p>
+        <h1 id="hero-title" class="hero__title">
+          <Image src={logo} alt={site.name} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 44vw, 90vw" loading="eager" fetchpriority="high" class="hero__logo" layout="none" />
+          <span class="hero__claim">Música, show y diseño.<br /><span class="accent">Una sola firma.</span></span>
+        </h1>
+        <p class="hero__lead">
+          DJ Open Format con más de una década en el ocio nocturno: de clubs y festivales a bodas y eventos privados. Dirección técnica, estética y operativa de tu evento bajo un mismo control.
+        </p>
+        <div class="hero__actions">
+          <a class="btn" href={u('/contacto?servicio=show')}>Contratar show <Icon name="arrowRight" /></a>
+          <PlaySessionButton client:idle={{ timeout: 1500 }} sessionKey={latest.key} title={latest.title} variant="ghost" label="Escuchar última sesión" />
+        </div>
+
+        {
+          next && (
+            <a class="hero__next" href={u('/shows')}>
+              <span class="hero__next-label">Próximo show</span>
+              <time class="hero__next-date" datetime={next.date}>{`${parts(next.date).day} ${parts(next.date).month}`}</time>
+              <span class="hero__next-name">{nextLabel}</span>
+              <Icon name="arrowUpRight" size={16} />
+            </a>
+          )
+        }
+      </div>
+
+      <div class="hero__photo">
+        <Picture src={heroPhoto} formats={['avif', 'webp']} widths={[400, 700, 1000]} sizes="(min-width: 1024px) 38vw, 70vw" alt="Z4YLON sentado en el escenario bajo luces rojas" loading="eager" layout="none" />
+      </div>
+    </div>
+
+    <a href="#intro" class="hero__scroll" aria-label="Ir al contenido"><span></span></a>
+  </section>
+
+  <Marquee items={genres} />
+
+  <!-- INTRO + STATS -->
+  <section class="section" id="intro" aria-labelledby="intro-title">
+    <div class="container intro">
+      <div class="intro__text" data-reveal>
+        <p class="eyebrow">Esencia</p>
+        <h2 class="h2" id="intro-title">Shows que forman parte del <span class="accent">ocio nocturno</span></h2>
+        <p class="lead">{bio.lead}</p>
+        <p class="prose">{bio.paragraphs[0]} {bio.paragraphs[1]}</p>
+        <a class="link-arrow" href={u('/press-kit#esencia')}>Conoce su historia <Icon name="arrowRight" /></a>
+      </div>
+      <dl class="stats" data-reveal style="--delay:120ms">
+        {
+          stats.map((s) => (
+            <div class="stat">
+              <dt class="stat__label">{s.label}</dt>
+              <dd class="stat__value">
+                <span aria-hidden="true"><span class="stat__prefix">{s.prefix}</span><span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span></span>
+                <span class="sr-only">Más de {s.value}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- SHOWS -->
+  <section class="section section--tight shows-home" aria-labelledby="shows-title">
+    <div class="container">
+      <div class="split-header">
+        <SectionHeader eyebrow="Agenda" title="Próximos shows" id="shows-title" />
+        <a class="link-arrow" href={u('/shows')}>Archivo: {events.past.length} shows desde 2015 <Icon name="arrowRight" /></a>
+      </div>
+      <ShowsExplorer client:idle={{ timeout: 1500 }} variant="compact" upcoming={events.upcoming} past={[]} refreshUrl={upcomingUrl} bandsintownUrl={site.bandsintown} />
+      <div class="shows-home__cta" data-reveal>
+        <p><strong>Contrata a Z4YLON</strong> y haz que tu evento quede marcado en la memoria de tus invitados.</p>
+        <a class="btn btn--light" href={u('/contacto?servicio=show')}>Contratar show</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASÍ LO VIVIMOS -->
+  <section class="section live" aria-labelledby="live-title">
+    <div class="container">
+      <SectionHeader eyebrow="En directo" title="Así lo <span class='outline-text'>vivimos</span>" id="live-title" lead="Clubs, festivales y fiestas patronales: la energía de pista contada por el público." />
+      <MediaGallery client:idle={{ timeout: 1500 }} items={live} layout="reel" ratio="9 / 16" hoverPreview label="Vídeos de shows en directo" sizes="290px" />
+    </div>
+  </section>
+
+  <!-- HITOS -->
+  <section class="section hitos" aria-labelledby="hitos-title">
+    <div class="container hitos__grid">
+      <div class="hitos__collage" data-reveal aria-hidden="false">
+        {
+          collage.map((c, i) => (
+            <figure class:list={['hitos__img', `hitos__img--${i + 1}`]}>
+              <Picture src={c.src} formats={['avif', 'webp']} widths={[360, 600, 900]} sizes="(min-width: 1024px) 30vw, 60vw" alt={c.alt} layout="none" />
+            </figure>
+          ))
+        }
+      </div>
+      <div>
+        <SectionHeader eyebrow="Trayectoria" title="Eventos destacados" id="hitos-title" />
+        <ol class="hitos__list" role="list">
+          {
+            highlights.map((h, i) => (
+              <li data-reveal style={`--delay:${i * 60}ms`}>
+                <span class="hitos__year mono">{h.year}</span>
+                <span class="hitos__event">
+                  <strong>{h.event}</strong>
+                  <span class="muted">{h.place}</span>
+                </span>
+                <span class="hitos__aud">{h.audience}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="lineup" data-reveal>
+          <p class="eyebrow">Ha compartido cartel con</p>
+          <ul role="list">{sharedLineup.map((a) => <li>{a}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESIÓN DESTACADA -->
+  <section class="section section--tight" aria-labelledby="mix-title">
+    <div class="container">
+      <article class="feature-mix" data-reveal>
+        <div class="feature-mix__cover">
+          <Image src={coverAfro} alt={`Portada de la sesión ${latest.title}`} widths={[320, 520, 720]} sizes="(min-width: 900px) 360px, 80vw" />
+        </div>
+        <div class="feature-mix__body">
+          <p class="eyebrow">Nueva sesión · {latest.edition}</p>
+          <h2 class="h2" id="mix-title">{latest.title}</h2>
+          <ul role="list" class="feature-mix__tags">
+            {latest.tags.map((t) => <li class="chip">{t}</li>)}
+            <li class="chip"><Icon name="clock" size={14} /> {formatDuration(latest.seconds)}</li>
+          </ul>
+          <div class="feature-mix__actions">
+            <PlaySessionButton client:idle={{ timeout: 1500 }} sessionKey={latest.key} title={latest.title} variant="round" />
+            <div>
+              <p class="feature-mix__hint">Sigue sonando mientras navegas por la web.</p>
+              <a class="link-arrow" href={u('/musica')}>Todas las sesiones y playlists <Icon name="arrowRight" /></a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ALL IN ONE -->
+  <section class="section services" aria-labelledby="services-title">
+    <div class="container">
+      <SectionHeader eyebrow="All in one" title="Todo el show <span class='accent'>resuelto</span>" id="services-title" lead="Una sola firma: música, marca, rider técnico, diseño y stage. Contrato y condiciones bajo solicitud directa." />
+      <ul role="list" class="services__grid">
+        {
+          services.map((s, i) => (
+            <li data-reveal style={`--delay:${i * 60}ms`}>
+              <a class="service" href={s.href}>
+                <span class="service__num mono">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="service__title">{s.title}</h3>
+                <p class="service__text">{s.text}</p>
+                <span class="service__arrow" aria-hidden="true">
+                  <Icon name="arrowUpRight" />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- PARA CADA EVENTO -->
+  <section class="section section--tight" aria-labelledby="venues-title">
+    <div class="container venues" data-reveal>
+      <h2 class="h3 venues__title" id="venues-title">Un show adaptado a cada contexto, desde sets íntimos hasta grandes formatos</h2>
+      <ul role="list" class="venues__list">
+        {venues.map((v) => <li>{v}</li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* HERO */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    padding-block: calc(var(--header-h) + 2rem) 5rem;
+    overflow: hidden;
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+  }
+  .hero__media :global(.hero__video) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.2) brightness(0.45);
+  }
+  .hero__glow {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(50% 60% at 78% 55%, rgb(212 18 74 / 0.35), transparent 70%),
+      linear-gradient(0deg, var(--bg) 2%, transparent 40%),
+      linear-gradient(90deg, rgb(7 7 10 / 0.85) 0%, transparent 60%);
+  }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: var(--space-l);
+  }
+  .hero__copy {
+    display: grid;
+    gap: 1.4rem;
+    justify-items: start;
+  }
+  .hero__title {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+  }
+  .hero__logo {
+    width: min(100%, 620px);
+    height: auto;
+    filter: drop-shadow(0 10px 40px rgb(212 18 74 / 0.35));
+  }
+  .hero__claim {
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 64;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+  .hero__lead {
+    max-width: 52ch;
+    color: var(--text-2);
+    font-size: var(--step-0);
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .hero__actions :global(.btn--sm) {
+    min-height: 48px;
+    padding: 0.8em 1.5em;
+    font-size: 0.95rem;
+  }
+  .hero__next {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: rgb(7 7 10 / 0.55);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+  }
+  .hero__next:hover {
+    border-color: var(--brand-hi);
+  }
+  .hero__next-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-hi);
+  }
+  .hero__next-date {
+    font-weight: 900;
+    font-variation-settings: 'wdth' 70;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+  .hero__next-name {
+    color: var(--text-2);
+  }
+  .hero__photo {
+    position: relative;
+    justify-self: end;
+    width: min(100%, 480px);
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px var(--line),
+      0 40px 80px -30px rgb(212 18 74 / 0.5);
+  }
+  .hero__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgb(7 7 10 / 0.6), transparent 40%);
+  }
+  .hero__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    translate: -50% 0;
+    width: 26px;
+    height: 42px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 999px;
+    display: grid;
+    justify-items: center;
+    padding-top: 8px;
+  }
+  .hero__scroll span {
+    width: 3px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--text);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__scroll span {
+      animation: scroll-hint 1.8s var(--ease-out) infinite;
+    }
+    .hero__copy > * {
+      animation: rise 1s var(--ease-out) both;
+    }
+    .hero__copy > :nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    .hero__copy > :nth-child(3) {
+      animation-delay: 0.2s;
+    }
+    .hero__copy > :nth-child(4) {
+      animation-delay: 0.3s;
+    }
+    .hero__copy > :nth-child(5) {
+      animation-delay: 0.4s;
+    }
+    .hero__photo {
+      animation: rise 1.2s 0.15s var(--ease-out) both;
+    }
+  }
+  @keyframes scroll-hint {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+  @media (max-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero__photo {
+      display: none;
+    }
+    .hero__glow {
+      background:
+        radial-gradient(80% 50% at 60% 30%, rgb(212 18 74 / 0.3), transparent 70%),
+        linear-gradient(0deg, var(--bg) 2%, transparent 50%);
+    }
+  }
+
+  /* INTRO */
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .intro__text {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat__value {
+    font-size: var(--step-4);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    line-height: 0.9;
+    display: flex;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat__prefix {
+    color: var(--brand-hi);
+  }
+  .stat__label {
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  @media (max-width: 900px) {
+    .intro {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* SHOWS HOME */
+  .split-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: var(--space-l);
+  }
+  .split-header :global(.section-header) {
+    margin-bottom: 0;
+  }
+  .shows-home__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: var(--space-l);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: var(--radius);
+    background:
+      linear-gradient(120deg, var(--brand-700), var(--brand-900)),
+      var(--brand-700);
+  }
+  .shows-home__cta p {
+    font-size: var(--step-1);
+    max-width: 42ch;
+    line-height: 1.35;
+  }
+
+  /* HITOS */
+  .hitos__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .hitos__collage {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, minmax(40px, 1fr));
+    aspect-ratio: 4 / 5;
+  }
+  .hitos__img {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+  }
+  .hitos__img :global(picture),
+  .hero__photo :global(picture) {
+    display: block;
+    height: 100%;
+  }
+  .hitos__img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hitos__img--1 {
+    grid-area: 1 / 1 / 5 / 4;
+  }
+  .hitos__img--2 {
+    grid-area: 2 / 4 / 5 / 7;
+  }
+  .hitos__img--3 {
+    grid-area: 4 / 2 / 7 / 6;
+    z-index: 1;
+  }
+  .hitos__list {
+    border-top: 1px solid var(--line);
+  }
+  .hitos__list li {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .hitos__year {
+    color: var(--brand-hi);
+    font-size: 0.85rem;
+  }
+  .hitos__event {
+    display: grid;
+  }
+  .hitos__event strong {
+    font-size: var(--step-1);
+    font-variation-settings: 'wdth' 85;
+    line-height: 1.2;
+  }
+  .hitos__aud {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-2);
+    text-align: right;
+  }
+  .lineup {
+    margin-top: var(--space-l);
+    display: grid;
+    gap: 1rem;
+  }
+  .lineup ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  .lineup li {
+    font-size: var(--step-2);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    text-transform: uppercase;
+    color: var(--text-2);
+    line-height: 1.1;
+  }
+  .lineup li:nth-child(odd) {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-2);
+  }
+  @media (max-width: 900px) {
+    .hitos__grid {
+      grid-template-columns: 1fr;
+    }
+    .hitos__collage {
+      position: relative;
+      top: 0;
+      max-width: 520px;
+    }
+    .hitos__list li {
+      grid-template-columns: 3.2rem minmax(0, 1fr);
+    }
+    .hitos__aud {
+      grid-column: 2;
+      text-align: left;
+    }
+  }
+
+  /* SESIÓN */
+  .feature-mix {
+    display: grid;
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: var(--space-l);
+    align-items: center;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border-radius: var(--radius-l);
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(70% 90% at 0% 0%, rgb(40 160 160 / 0.14), transparent 60%),
+      linear-gradient(180deg, var(--surface), var(--bg-2));
+  }
+  .feature-mix__cover {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .feature-mix__cover :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .feature-mix__body {
+    display: grid;
+    gap: 1.1rem;
+  }
+  .feature-mix__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .feature-mix__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin-top: 0.5rem;
+  }
+  .feature-mix__actions > div {
+    display: grid;
+    gap: 0.6rem;
+    justify-items: start;
+  }
+  .feature-mix__hint {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  @media (max-width: 760px) {
+    .feature-mix {
+      grid-template-columns: 1fr;
+    }
+    .feature-mix__cover {
+      max-width: 320px;
+    }
+  }
+
+  /* SERVICES */
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .services__grid li {
+    background: var(--bg);
+  }
+  .service {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    height: 100%;
+    min-height: 240px;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    text-decoration: none;
+    transition: background 0.35s;
+  }
+  .service:hover {
+    background: linear-gradient(160deg, rgb(212 18 74 / 0.18), transparent 70%);
+  }
+  .service__num {
+    font-size: 0.78rem;
+    color: var(--brand-hi);
+  }
+  .service__title {
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 64;
+    text-transform: uppercase;
+  }
+  .service__text {
+    color: var(--text-2);
+    max-width: 36ch;
+  }
+  .service__arrow {
+    position: absolute;
+    top: clamp(1.5rem, 3vw, 2.25rem);
+    right: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--muted);
+    transition:
+      transform 0.35s var(--ease-out),
+      color 0.2s;
+  }
+  .service:hover .service__arrow {
+    color: var(--text);
+    transform: translate(3px, -3px);
+  }
+
+  @media (max-width: 1000px) {
+    .services__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 620px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+    .service {
+      min-height: 0;
+    }
+  }
+
+  /* VENUES */
+  .venues {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--space-l);
+    align-items: center;
+    padding-block: var(--space-l);
+    border-block: 1px solid var(--line);
+  }
+  .venues__title {
+    font-size: var(--step-2);
+  }
+  .venues__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .venues__list li {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 800px) {
+    .venues {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

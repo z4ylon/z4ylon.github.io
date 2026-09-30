@@ -1,0 +1,403 @@
+---
+import { u } from '@/lib/url';
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import FaqList from '@/components/FaqList.astro';
+import Icon from '@/components/Icon.astro';
+import MediaGallery from '@/components/react/MediaGallery';
+import { designFaqs, designClients, flyerCaptions } from '@/data/site';
+import { img, imageItem, videoItem } from '@/lib/media';
+
+const logos = [
+  ['Z4YLON', 'Logotipo de Z4YLON'],
+  ['Monograma S', 'Logotipo con monograma “S” caligráfico'],
+  ['Paranoia Exclusive Club', 'Logotipo de Paranoia Exclusive Club'],
+  ['ELVER M', 'Logotipo del artista ELVER M'],
+  ['Álvaro Cotán', 'Logotipo de Álvaro Cotán'],
+  ['DJ Janu', 'Logotipo de DJ Janu'],
+  ['Escudo JJ', 'Logotipo con escudo y monograma'],
+  ['Premium Updates', 'Logotipo de Premium Updates'],
+  ['CAS3RIO', 'Logotipo de CAS3RIO'],
+  ['D!SNOKTIA', 'Logotipo de D!snoktia'],
+  ['Guille Dejota', 'Logotipo de Guille Dejota'],
+  ['Replika Events', 'Logotipo de Replika Events'],
+];
+
+const visualAlts = [
+  'Visuales para Guille Dejota con cintas animadas',
+  'Visuales en verde neón para Replika Events',
+  'Visuales en formato vertical con texturas animadas',
+  'Visuales de Z4YLON con el artista y el logo en blanco y negro',
+  'Visuales para ELVER con luces de escenario',
+  'Visuales geométricos en rojo con rombos animados',
+  'Visuales para DJ Vity Domínguez con logo 3D amarillo',
+  'Visuales de Z4YLON con el isotipo 3D',
+  'Isotipo de Z4YLON en loop animado',
+  'Visuales hexagonales con el nombre Z4YLON en rotación',
+  'Visuales del logo Z4YLON en un bosque rojo',
+];
+const visuals = await Promise.all(visualAlts.map((a, i) => videoItem(`visual-${String(i + 1).padStart(2, '0')}`, 'visuals', a)));
+
+const flyerPicks = [4, 6, 3, 20, 23, 2, 16, 24];
+const flyers = await Promise.all([
+  imageItem('presskit/extra.jpg', 'Flyer diseñado por Z4YLON: Fiesta de Fin de Año 2025, Terraza Oasis', { widths: [280, 420, 600] }),
+  ...flyerPicks.map((n) => imageItem(`flyers/flyer-${String(n).padStart(2, '0')}.webp`, `Flyer diseñado por Z4YLON: ${flyerCaptions[n - 1]}`, { widths: [280, 420, 600] })),
+]);
+
+const highlights = [
+  ['design/highlight-shows.png', 'Shows'],
+  ['design/highlight-musica.png', 'Música'],
+  ['design/highlight-diseno.png', 'Diseño'],
+  ['design/highlight-hardware.png', 'Hardware'],
+  ['design/highlight-extra.png', 'Info'],
+];
+---
+
+<Base title="Diseño gráfico: logos, visuales, flyers y merchandising" description="Z4YLON diseña logos, visuales para shows, flyers, pegatinas, tarjetas y destacados de Instagram para DJs, salas y eventos. Más de 12 años creando identidades visuales.">
+  <PageHero
+    eyebrow="Diseño gráfico"
+    title="Da un salto de <span class='accent'>calidad</span>"
+    lead="Más de 12 años creando identidades visuales. Diseños desarrollados desde la experiencia real en escenarios y eventos. Haz que tu marca sea reconocible."
+    image={img('posters/visual-08.jpg')}
+    imagePosition="right center"
+    sections={[
+      { href: '#logos', label: 'Logos' },
+      { href: '#visuales', label: 'Visuales' },
+      { href: '#flyers', label: 'Flyers' },
+      { href: '#merch', label: 'Merchandising' },
+    ]}
+  />
+
+  <!-- LOGOS -->
+  <section class="section" id="logos" aria-labelledby="logos-title">
+    <div class="container">
+      <SectionHeader eyebrow="01 · Logos" title="Identidades que se recuerdan" id="logos-title" lead="Logotipos para DJs, salas, promotoras y marcas: vectorizados, adaptados a redes y listos para cualquier soporte." />
+      <ul role="list" class="logos">
+        {
+          logos.map(([name, alt], i) => (
+            <li data-reveal style={`--delay:${(i % 4) * 60}ms`}>
+              <figure>
+                <Image src={img(`design/logo-${String(i + 1).padStart(2, '0')}.png`)} alt={alt} widths={[240, 400]} sizes="(min-width: 1024px) 20vw, 40vw" />
+                <figcaption>{name}</figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="service-foot">
+        <FaqList items={designFaqs.logos} compact />
+        <a class="btn" href={u('/contacto?servicio=logo')}>Solicitar logo <Icon name="arrowRight" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUALES -->
+  <section class="section" id="visuales" aria-labelledby="visuales-title">
+    <div class="container">
+      <SectionHeader eyebrow="02 · Visuales" title="Tu marca en las pantallas" id="visuales-title" lead="Muestra a los asistentes de tu show visuales con tu marca: desde loops cortos con tu logo en 2D hasta versiones más largas de máxima calidad con logo en 3D." />
+      <MediaGallery client:idle={{ timeout: 1500 }} items={visuals} layout="grid" ratio="16 / 9" min="300px" hoverPreview label="Visuales para shows" sizes="(min-width: 1024px) 30vw, 90vw" />
+      <div class="service-foot">
+        <FaqList items={designFaqs.visuales} compact />
+        <a class="btn" href={u('/contacto?servicio=visuales')}>Solicitar visuales <Icon name="arrowRight" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLYERS -->
+  <section class="section" id="flyers" aria-labelledby="flyers-title">
+    <div class="container">
+      <div class="split">
+        <SectionHeader eyebrow="03 · Flyers" title="El impacto que merece tu evento" id="flyers-title" lead="Potencia tu visión con flyers, videoflyers y portadas adaptadas a redes sociales o impresión. Pulsa un flyer para ampliarlo." />
+        <a class="btn" href={u('/contacto?servicio=flyers')}>Solicitar flyers <Icon name="arrowRight" /></a>
+      </div>
+      <MediaGallery client:idle={{ timeout: 1500 }} items={flyers} layout="reel" ratio="9 / 16" label="Flyers diseñados por Z4YLON" sizes="260px" />
+      <p class="more-link"><a class="link-arrow" href={u('/press-kit#flyers')}>Ver los 25 flyers de eventos <Icon name="arrowRight" /></a></p>
+    </div>
+  </section>
+
+  <!-- MERCH -->
+  <section class="section" id="merch" aria-labelledby="merch-title">
+    <div class="container">
+      <SectionHeader eyebrow="04 · Merchandising" title="Tu marca, también en la mano" id="merch-title" />
+      <div class="merch">
+        <article class="merch__card" data-reveal>
+          <div class="merch__media merch__media--center">
+            <Image src={img('design/stickers.png')} alt="Pegatina troquelada con el logo de Z4YLON y su usuario de redes" widths={[400, 700]} sizes="(min-width: 1024px) 30vw, 90vw" />
+          </div>
+          <div class="merch__body">
+            <h3 class="h3">Pegatinas</h3>
+            <p>Gana interacción orgánica con tu público con pegatinas profesionales con tu logo y tus redes sociales.</p>
+            <a class="link-arrow" href={u('/contacto?servicio=pegatinas')}>Solicitar pegatinas <Icon name="arrowRight" /></a>
+          </div>
+        </article>
+        <article class="merch__card" data-reveal style="--delay:80ms">
+          <div class="merch__media">
+            <Image src={img('design/cards-1.png')} alt="Maqueta de tarjetas de presentación negras de Z4YLON con acabado metalizado" widths={[400, 700, 1000]} sizes="(min-width: 1024px) 30vw, 90vw" />
+          </div>
+          <div class="merch__body">
+            <h3 class="h3">Tarjetas de presentación <span class="chip">Efecto metalizado</span></h3>
+            <p>Crea tarjetas profesionales totalmente personalizadas y marca la diferencia en cada contacto.</p>
+            <a class="link-arrow" href={u('/contacto?servicio=tarjetas')}>Solicitar tarjetas <Icon name="arrowRight" /></a>
+          </div>
+        </article>
+        <article class="merch__card" data-reveal style="--delay:160ms">
+          <div class="merch__media merch__media--highlights">
+            <ul role="list" class="ig">
+              {
+                highlights.map(([src, label]) => (
+                  <li>
+                    <Image src={img(src)} alt="" width={120} height={120} />
+                    <span>{label}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="merch__body">
+            <h3 class="h3">Destacados de Instagram</h3>
+            <p>Haz que tus redes den un salto de imagen con imagotipos personalizados para tus historias destacadas.</p>
+            <a class="link-arrow" href={u('/contacto?servicio=destacados')}>Solicitar destacados <Icon name="arrowRight" /></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="section section--tight" aria-labelledby="clients-title">
+    <div class="container clients">
+      <div data-reveal>
+        <p class="eyebrow">Experiencia</p>
+        <h2 class="h2" id="clients-title">Han confiado en su diseño</h2>
+        <p class="lead">{designClients.intro}</p>
+      </div>
+      <dl class="clients__list" data-reveal style="--delay:100ms">
+        {
+          designClients.groups.map((g) => (
+            <div>
+              <dt>{g.label}</dt>
+              <dd>{g.items.join(' · ')}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="other" data-reveal>
+        <Icon name="sparkles" size={32} />
+        <div>
+          <h2 class="h3">¿Buscas diseñar otra solución gráfica?</h2>
+          <p class="muted">Muéstrame qué necesitas y lo hacemos realidad.</p>
+        </div>
+        <a class="btn" href={u('/contacto?servicio=marca')}>Impulsa mi marca <Icon name="arrowRight" /></a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .logos li {
+    background: var(--bg);
+  }
+  .logos figure {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    transition: background 0.3s;
+  }
+  .logos figure:hover {
+    background: radial-gradient(70% 70% at 50% 45%, rgb(212 18 74 / 0.18), transparent 70%);
+  }
+  .logos :global(img) {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    align-self: center;
+    transition: transform 0.5s var(--ease-out);
+  }
+  .logos figure:hover :global(img) {
+    transform: scale(1.06);
+  }
+  .logos figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+  .service-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-l);
+    align-items: center;
+    margin-top: var(--space-l);
+  }
+  .split {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .split :global(.section-header) {
+    margin-bottom: 3rem;
+  }
+  .more-link {
+    margin-top: 1.5rem;
+  }
+  .merch {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .merch__card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--surface), var(--bg));
+  }
+  .merch__media {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(70% 70% at 50% 50%, rgb(212 18 74 / 0.18), transparent 70%), var(--bg-2);
+    overflow: hidden;
+  }
+  .merch__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .merch__media--center :global(img) {
+    width: 75%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgb(0 0 0 / 0.6));
+  }
+  .ig {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+  .ig li {
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-2);
+  }
+  .ig :global(img) {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand);
+  }
+  .merch__body {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+    justify-items: start;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    color: var(--text-2);
+  }
+  .merch__body h3 {
+    color: var(--text);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .clients {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-l);
+    padding-block: var(--space-l);
+    border-block: 1px solid var(--line);
+  }
+  .clients > div {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .clients__list > div {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .clients__list dt {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brand-hi);
+    padding-top: 0.2rem;
+  }
+  .clients__list dd {
+    color: var(--text-2);
+  }
+  .other {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: var(--radius-l);
+    background: linear-gradient(120deg, var(--brand-700), var(--brand-900));
+  }
+  .other .muted {
+    color: #f3cdd7;
+  }
+  .other :global(.btn) {
+    --_bg: var(--text);
+    --_fg: var(--bg);
+    --_bd: var(--text);
+  }
+  @media (max-width: 1000px) {
+    .logos {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .merch {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+    }
+  }
+  @media (max-width: 760px) {
+    .logos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .service-foot,
+    .clients,
+    .other {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+    .clients__list > div {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+</style>

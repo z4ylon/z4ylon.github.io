@@ -1,0 +1,1310 @@
+{
+ "fetchedAt": "2026-09-30T10:33:42.967Z",
+ "upcoming": [
+  {
+   "id": "108932104",
+   "date": "2026-10-03T18:00:00",
+   "end": "2026-10-03T23:00:00",
+   "title": "EVENTO PRIVADO: Boda (Ciudad Real, Spain)",
+   "venue": "EVENTO PRIVADO: Boda (Ciudad Real, Spain)",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108932104",
+   "soldOut": false
+  },
+  {
+   "id": "108313754",
+   "date": "2026-10-24T18:00:00",
+   "end": "2026-10-25T00:00:00",
+   "title": "EVENTO PRIVADO: Boda (Córdoba, Spain)",
+   "venue": "EVENTO PRIVADO: Boda (Córdoba, Spain)",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108313754",
+   "soldOut": false
+  }
+ ],
+ "past": [
+  {
+   "id": "103987692",
+   "date": "2015-12-22T12:00:00",
+   "end": null,
+   "title": "Xmas Matinee Aranjuez 2015",
+   "venue": "Xmas Matinee Aranjuez 2015",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento al aire libre y gratuito sin alcohol para los alumnos de los centros de Aranjuez tras acabar su último día del 1er trimestre de curso; y los ciudadanos en general. Música mezclada en directo, chocolatada  y chupitos sin alcohol.",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103987692",
+   "soldOut": false
+  },
+  {
+   "id": "104027594",
+   "date": "2016-01-15T23:30:00",
+   "end": null,
+   "title": "Mis 18 Cumpleaños",
+   "venue": "Mis 18 Cumpleaños",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento privado",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104027594",
+   "soldOut": false
+  },
+  {
+   "id": "104027639",
+   "date": "2016-06-11T17:00:00",
+   "end": null,
+   "title": "Balloon Party by Dejavu Club",
+   "venue": "Balloon Party by Dejavu Club",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento para menores organizado por Dejavu Club\nREGGAETON - DEMBOW - ELECTROLATINO\nEDM - TRAP- HARDSTYLE - TECHNO - DUBSTEP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104027639",
+   "soldOut": false
+  },
+  {
+   "id": "104027761",
+   "date": "2016-09-23T15:00:00",
+   "end": null,
+   "title": "K'NOAS FESTIVAL 2016 (I EDITION)",
+   "venue": "K'NOAS FESTIVAL 2016 (I EDITION)",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Festival universitario al aire libre para dar la bienvenida a los nuevos y a los veteranos integrantes de la URJC de Aranjuez.\n\n-Carreras de canoas dragón por el río Tajo\n-Música tocada en directo por bandas de rock de la zona\n     ADRENALINA - TROPIC ACID - B-TOUCH\n-Cierre con DJ's\n     Z4YLON b2b FATCAP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104027761",
+   "soldOut": false
+  },
+  {
+   "id": "104029644",
+   "date": "2017-03-01T19:00:00",
+   "end": null,
+   "title": "Entierro de la Sardina 2017 Aranjuez",
+   "venue": "Entierro de la Sardina 2017 Aranjuez",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento universitario abierto y gratuito realizado al aire libre con motivo de despedida de los Carnavales en su último día, organizado por el Ayuntamiento de Aranjuez, UEPA (Unión de Estudiantes Por Aranjuez) y URJC (Universidad Rey Juan Carlos)\nCONCURSO DE DISFRACES Y DJ's en directo\nZ4YLON b2b Fatcap",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104029644",
+   "soldOut": false
+  },
+  {
+   "id": "104030000",
+   "date": "2017-05-19T23:30:00",
+   "end": null,
+   "title": "Fin de curso 2º Bachillerato IES Alpajés",
+   "venue": "Fin de curso 2º Bachillerato IES Alpajés",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento privado de fin de curso del instituto IES Alpajés (Aranjuez, Madrid)\nDJ en directo y sorpresas",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104030000",
+   "soldOut": false
+  },
+  {
+   "id": "103987793",
+   "date": "2017-05-29T23:00:00",
+   "end": null,
+   "title": "Macro Discoteca de las Fiestas de San Fernando 2017 Aranjuez",
+   "venue": "Macro Discoteca de las Fiestas de San Fernando 2017 Aranjuez",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Macro Discoteca de las Fiestas de San Fernando 2017 de Aranjuez\nEvento gratuito al aire libre.\n\n\nLINE UP:\n\n- Z4YLON\n23:00 - 1:00 - ELECTRÓNICA\n\n- DARÍO MORA\n1:00 - 3:00 - REGGAETON Y COMERCIAL\n\n- ALBERTO JUMPER b2b CARLOS GRANADOS from TWERK IT CLUB\n3:00 - 5:00 - REGGAETON, URBANO Y HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103987793",
+   "soldOut": false
+  },
+  {
+   "id": "104030403",
+   "date": "2017-09-10T23:00:00",
+   "end": null,
+   "title": "Macro Discoteca Fiestas 2017 de Campo Real",
+   "venue": "Macro Discoteca Fiestas 2017 de Campo Real",
+   "city": "Campo Real",
+   "region": "",
+   "country": "Spain",
+   "description": "Macro Discoteca de las Fiestas Patronales en honor al Santísimo Cristo de la Peña 2017 de Campo Real.\nDJ'S INVITADOS: Z4YLON y DJ Juanillo",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104030403",
+   "soldOut": false
+  },
+  {
+   "id": "104031681",
+   "date": "2017-10-01T22:00:00",
+   "end": null,
+   "title": "[Evento Privado] Cena de Empresa Mecaplast",
+   "venue": "[Evento Privado] Cena de Empresa Mecaplast",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento privado realizado por TOC TOC Eventos para Mecaplast.\nDJ invitado Z4YLON",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104031681",
+   "soldOut": false
+  },
+  {
+   "id": "103987711",
+   "date": "2017-12-22T11:00:00",
+   "end": null,
+   "title": "Xmas Matinee Aranjuez 2017",
+   "venue": "Xmas Matinee Aranjuez 2017",
+   "city": "Aranjuez",
+   "region": "",
+   "country": "Spain",
+   "description": "🎄 XMAS MATINEE 🎄\n¡Disfruta de la reinvención de la clásica \"SIN\" de Navidad de Aranjuez a lo grande!\n\nEl evento se enfocará principalmente a adolescentes y universitarios. Tendremos photocall con muérdago, toro mecánico, iluminación, animación y muchísimas más cosas para que disfrutes GRATIS de asistir a este gran evento 💣\n\nDJ set by Z4YLON\n\nSe celebrará el próximo Viernes 22 de Diciembre en la plaza del ayuntamiento de Aranjuez de 10:00 a 14:00 ⌚\nEvento organizado por @Z4YLON, Toc Toc Eventos y el Ayuntamiendo de Aranjuez.\n\nFiesta gratuita - Abierta a todo el público - Se reserva derecho de admisión",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103987711",
+   "soldOut": false
+  },
+  {
+   "id": "103987683",
+   "date": "2018-05-18T12:00:00",
+   "end": null,
+   "title": "Actuality Summer Fest 2018",
+   "venue": "Actuality Summer Fest 2018",
+   "city": "",
+   "region": "",
+   "country": "",
+   "description": "🌅ACTUALITY SUMMER FEST 2018 🌅 🔥 Un festival online estilo \"mega radioshow\" creado por @overload_sqvad y @actualityfm_es 🔥 ¡35 grandes artistas, emergentes, nacionales e internacionales, te harán disfrutar y sentir nuevos sonidos cargados de energía! ¡Tras mucho tiempo de esfuerzo y dedicación hemos traido el cartel más grande y 🔝 que hemos podido conseguir y que con el apoyo de los artistas invitados ha salido a la luz! 🔴 VIERNES 17, SÁBADO 18 Y DOMINGO 19 DE AGOSTO SERÁN LOS DÍAS CLAVE PARA NO ALEJARTE DE TU MOVIL, PC O TABLET PARA ESTAR ESCUCHANDO A GRANDES ARTISTAS A TRAVÉS DE LA WEB DE @OVERLOAD_SQVAD Y @ACTUALITYFM_ES CON ENLACES EN SUS PERFILES 🔴\n\n#ACTUALITYSUMMERFEST\n#BEOVERLOADED\n#WEAREOVERLOAD\n#ROYOSHAKE\n#LOUDCORE",
+   "lineup": [
+    "Z4YLON",
+    "J Holland",
+    "Roberto Sansixto",
+    "Not Again",
+    "Shake Coconut",
+    "Alby Loud",
+    "Reaux",
+    "GioSer Hernandez",
+    "Jake Rello",
+    "Superpig",
+    "Pavlo Marin",
+    "Garabatto",
+    "Subshock & Evangelos",
+    "Feryael Justice",
+    "Ruizer"
+   ],
+   "url": "https://www.bandsintown.com/e/103987683",
+   "soldOut": false
+  },
+  {
+   "id": "103987676",
+   "date": "2018-05-18T16:00:00",
+   "end": null,
+   "title": "Actuality Spring Fest 2018",
+   "venue": "Actuality Spring Fest 2018",
+   "city": "",
+   "region": "",
+   "country": "",
+   "description": "@overload_sqvad Y @actualityfm_es TE TRAEN A MÁS DE 20 GRANDES ARTISTAS REPARTIDOS EN TRES DÍAS DE PURA MÚSICA ELECTRÓNICA\n\nEL 18, 19 y 20 de MAYO DE 16:00 A 00:00 TENDRÁS LA MEJOR MÚSICA ELECTRÓNICA DE LA MANO DE GRANDES ARTISTAS NACIONALES Y EMERGENTES\nEVENTO ONLINE TRANSMITIDO EN LA WEB DE OVERLOAD EN LA DE ACTUALITY FM\n\nTODA LA INFORMACIÓN EN NUESTRA WEB\n\n#BEOVERLOADED\n#WEAREOVERLOAD",
+   "lineup": [
+    "Z4YLON",
+    "TNT",
+    "Yeyo",
+    "Shake Coconut",
+    "Aitor Mv",
+    "Gioser",
+    "Sansixto",
+    "Superpig",
+    "Pavlo Marin",
+    "DIVEK"
+   ],
+   "url": "https://www.bandsintown.com/e/103987676",
+   "soldOut": false
+  },
+  {
+   "id": "104031713",
+   "date": "2018-06-23T20:00:00",
+   "end": null,
+   "title": "Noche de San Juan en Actuality FM",
+   "venue": "Noche de San Juan en Actuality FM",
+   "city": "",
+   "region": "",
+   "country": "",
+   "description": "Evento online transmitido desde la radio online Actuality FM con motio de la Noche de San Juan. \nDJ's Invitados: Z4YLON, Zortness, Pastoriovs y Whisix",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104031713",
+   "soldOut": false
+  },
+  {
+   "id": "104031749",
+   "date": "2018-06-29T20:30:00",
+   "end": null,
+   "title": "Evento Físico OVERLOAD SQVAD",
+   "venue": "Evento Físico OVERLOAD SQVAD",
+   "city": "Coslada",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento en vivo gratuito en Coslada. Disfruta de 3 horas de música electronica al aire libre lleno de luz y sonido organizado por OVERLOAD SQVAD con el Ayuntamiento de Coslada.\n\nLINE UP:\n\nZ4YLON:\n20:30 - 22:00\nHouse music and hits\n\nSNICKERS:\n22:00 - 23:30\nHard House y Hardstye",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104031749",
+   "soldOut": false
+  },
+  {
+   "id": "104031768",
+   "date": "2021-06-20T23:30:00",
+   "end": null,
+   "title": "Sábado en One More Night Lounge Pinto Madrid",
+   "venue": "Sábado en One More Night Lounge Pinto Madrid",
+   "city": "Pinto",
+   "region": "",
+   "country": "Spain",
+   "description": "Música en directo con 2 áreas (terraza e interior). Cachimbas, cenas y música comercial mezclada en vivo por DJ's residentes e invitados.\nLINE UP: \nZona exterior: Carlos Granados\nZona interior: Z4YLON",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104031768",
+   "soldOut": false
+  },
+  {
+   "id": "103854804",
+   "date": "2021-12-17T23:30:00",
+   "end": null,
+   "title": "Viernes Sala ON Madrid",
+   "venue": "Viernes Sala ON Madrid",
+   "city": "Alcorcón",
+   "region": "",
+   "country": "Spain",
+   "description": "TECH HOUSE - BASS HOUSE - EDM - COMERCIAL",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854804",
+   "soldOut": false
+  },
+  {
+   "id": "103061517",
+   "date": "2021-12-22T23:30:00",
+   "end": null,
+   "title": "F*** YOU EXAMS! I'M FAMOUS",
+   "venue": "F*** YOU EXAMS! I'M FAMOUS",
+   "city": "Madrid",
+   "region": "",
+   "country": "Spain",
+   "description": "00:00 - 02:00 : GIN K\n02:00 - 04:00 : Z4YLON\n04:00 - 06:00 : KEYZEN",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103061517",
+   "soldOut": false
+  },
+  {
+   "id": "103061473",
+   "date": "2021-12-24T23:30:00",
+   "end": null,
+   "title": "Merry Crhistmas Baraka 2021",
+   "venue": "Merry Crhistmas Baraka 2021",
+   "city": "Pinto",
+   "region": "",
+   "country": "Spain",
+   "description": "",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103061473",
+   "soldOut": false
+  },
+  {
+   "id": "103934713",
+   "date": "2022-03-26T16:30:00",
+   "end": null,
+   "title": "La Parrilla de la Máquina",
+   "venue": "La Parrilla de la Máquina",
+   "city": "Madrid",
+   "region": "",
+   "country": "Spain",
+   "description": "DEEP HOUSE - SLAP HOUSE - FRENCH HOUSE - LATINO - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103934713",
+   "soldOut": false
+  },
+  {
+   "id": "103449105",
+   "date": "2022-04-16T23:30:00",
+   "end": null,
+   "title": "Sábado en Ikebana",
+   "venue": "Sábado en Ikebana",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103449105",
+   "soldOut": false
+  },
+  {
+   "id": "103449072",
+   "date": "2022-05-14T23:30:00",
+   "end": null,
+   "title": "Sábado Gamberro",
+   "venue": "Sábado Gamberro",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103449072",
+   "soldOut": false
+  },
+  {
+   "id": "103470539",
+   "date": "2022-05-21T23:30:00",
+   "end": null,
+   "title": "Tropical Night",
+   "venue": "Tropical Night",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103470539",
+   "soldOut": false
+  },
+  {
+   "id": "103527897",
+   "date": "2022-06-10T23:30:00",
+   "end": null,
+   "title": "Mojito Summer Nights",
+   "venue": "Mojito Summer Nights",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103527897",
+   "soldOut": false
+  },
+  {
+   "id": "103527901",
+   "date": "2022-06-11T23:30:00",
+   "end": null,
+   "title": "Fiesta del Semáforo",
+   "venue": "Fiesta del Semáforo",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103527901",
+   "soldOut": false
+  },
+  {
+   "id": "103563151",
+   "date": "2022-06-24T23:30:00",
+   "end": null,
+   "title": "Noche de San Juan",
+   "venue": "Noche de San Juan",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103563151",
+   "soldOut": false
+  },
+  {
+   "id": "103563153",
+   "date": "2022-06-25T23:30:00",
+   "end": null,
+   "title": "Summer Paradise Party",
+   "venue": "Summer Paradise Party",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103563153",
+   "soldOut": false
+  },
+  {
+   "id": "103579633",
+   "date": "2022-06-30T23:30:00",
+   "end": null,
+   "title": "Terraza Gusto Ikebana",
+   "venue": "Terraza Gusto Ikebana",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103579633",
+   "soldOut": false
+  },
+  {
+   "id": "103579637",
+   "date": "2022-07-02T23:30:00",
+   "end": null,
+   "title": "LOVE NIGHT",
+   "venue": "LOVE NIGHT",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103579637",
+   "soldOut": false
+  },
+  {
+   "id": "103598551",
+   "date": "2022-07-09T23:30:00",
+   "end": null,
+   "title": "Saturday Night Fever",
+   "venue": "Saturday Night Fever",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103598551",
+   "soldOut": false
+  },
+  {
+   "id": "103615545",
+   "date": "2022-07-16T23:30:00",
+   "end": null,
+   "title": "Summer Party",
+   "venue": "Summer Party",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103615545",
+   "soldOut": false
+  },
+  {
+   "id": "103640285",
+   "date": "2022-07-23T23:30:00",
+   "end": null,
+   "title": "Summer Night",
+   "venue": "Summer Night",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103640285",
+   "soldOut": false
+  },
+  {
+   "id": "103645998",
+   "date": "2022-07-30T19:30:00",
+   "end": null,
+   "title": "Holi Colours Festival Ciudad Real 2022",
+   "venue": "Holi Colours Festival Ciudad Real 2022",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "📣 Este próximo sábado, inundamos #CIUDADREAL de color! 🤩\nㅤ\n⏰ Sábado 30 Julio, 19:30h\n📍 Ciudad Real (Reciento Ferial)\n🎉 Lluvia de #colores , confeti, megatron, merchandising, dj, speaker, animación, regalos, globos gigantes.... y mucho más!! 😍\n\nMÚSICA A MANOS DE @Z4YLON 💿🎚🎛🎛🎚💿\nY @CHEMA_GONZALEZ_DJ \n\nCOMERCIAL - LATINO - TECH HOUSE - ÉXITOS\nㅤ\n✌🏼Acceso #gratuito al evento.\nㅤ\n👕👚¡Ven con ropa blanca, así resaltarán más todos los colores!\nㅤ\n🌈 Bolsas #holi gratis a los 1000 primeros asistentes.",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103645998",
+   "soldOut": false
+  },
+  {
+   "id": "103645934",
+   "date": "2022-07-30T23:30:00",
+   "end": null,
+   "title": "Zurra 2022 Ciudad Real",
+   "venue": "Zurra 2022 Ciudad Real",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103645934",
+   "soldOut": false
+  },
+  {
+   "id": "103660449",
+   "date": "2022-07-31T23:30:00",
+   "end": null,
+   "title": "Pandorga 2022 Ciudad Real",
+   "venue": "Pandorga 2022 Ciudad Real",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103660449",
+   "soldOut": false
+  },
+  {
+   "id": "103854792",
+   "date": "2022-08-06T23:30:00",
+   "end": null,
+   "title": "Noche de Travesuras",
+   "venue": "Noche de Travesuras",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854792",
+   "soldOut": false
+  },
+  {
+   "id": "103854790",
+   "date": "2022-08-13T23:30:00",
+   "end": null,
+   "title": "Summer Vibes",
+   "venue": "Summer Vibes",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854790",
+   "soldOut": false
+  },
+  {
+   "id": "103854786",
+   "date": "2022-08-17T17:00:00",
+   "end": null,
+   "title": "Vermouth! TardeoFeria 2k22 Ciudad Real",
+   "venue": "Vermouth! TardeoFeria 2k22 Ciudad Real",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854786",
+   "soldOut": false
+  },
+  {
+   "id": "103854773",
+   "date": "2022-08-22T17:00:00",
+   "end": null,
+   "title": "Lunes de Vermouth 2022 Ciudad Real",
+   "venue": "Lunes de Vermouth 2022 Ciudad Real",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854773",
+   "soldOut": false
+  },
+  {
+   "id": "103854794",
+   "date": "2022-08-27T23:30:00",
+   "end": null,
+   "title": "Summer Vibes",
+   "venue": "Summer Vibes",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854794",
+   "soldOut": false
+  },
+  {
+   "id": "103854777",
+   "date": "2022-09-03T23:30:00",
+   "end": null,
+   "title": "Noche de Travesuras",
+   "venue": "Noche de Travesuras",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854777",
+   "soldOut": false
+  },
+  {
+   "id": "103854780",
+   "date": "2022-09-10T23:30:00",
+   "end": null,
+   "title": "Jaleo Universitario",
+   "venue": "Jaleo Universitario",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854780",
+   "soldOut": false
+  },
+  {
+   "id": "103854824",
+   "date": "2022-09-17T23:30:00",
+   "end": null,
+   "title": "Sábado en Ikebana",
+   "venue": "Sábado en Ikebana",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103854824",
+   "soldOut": false
+  },
+  {
+   "id": "103867788",
+   "date": "2022-10-28T21:30:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.28.OCT",
+   "venue": "Music & Dinner: Makao Street Food V.28.OCT",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103867788",
+   "soldOut": false
+  },
+  {
+   "id": "103913370",
+   "date": "2022-11-18T21:30:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.18.NOV",
+   "venue": "Music & Dinner: Makao Street Food V.18.NOV",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103913370",
+   "soldOut": false
+  },
+  {
+   "id": "103924803",
+   "date": "2022-11-25T21:30:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.25.NOV",
+   "venue": "Music & Dinner: Makao Street Food V.25.NOV",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103924803",
+   "soldOut": false
+  },
+  {
+   "id": "103930707",
+   "date": "2022-12-02T21:30:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.2.DIC.",
+   "venue": "Music & Dinner: Makao Street Food V.2.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103930707",
+   "soldOut": false
+  },
+  {
+   "id": "103930708",
+   "date": "2022-12-03T15:30:00",
+   "end": null,
+   "title": "Martin Miller's Special Evening at Makao Street Food S.3.DIC.",
+   "venue": "Martin Miller's Special Evening at Makao Street Food S.3.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "Evento especial protagonizado por Martin Miller. Ofertas en gin tonics de la marca con renombre presentados por su azafata de imagen con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - FRENCH HOUSE",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103930708",
+   "soldOut": false
+  },
+  {
+   "id": "103924824",
+   "date": "2022-12-05T23:30:00",
+   "end": null,
+   "title": "ANIVERSARY WEEK Origen Club 2022",
+   "venue": "ANIVERSARY WEEK Origen Club 2022",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "COPAS PREMIUM - CACHIMBAS - ANIMACIÓN - AMBIENTE EXCLUSIVO - SORPRESAS\n\nSORTEO TRAVELBOX PARA DOS PERSONAS\nParticipa al pedir copas de Brugal, DYC 8, Larios & Larios Rose\n\n¡SÉ DE LOS 100 PRIMEROS Y PARTICIPA EN EL SORTEO SORPRESA!\n\nCOMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103924824",
+   "soldOut": false
+  },
+  {
+   "id": "103976943",
+   "date": "2022-12-16T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.16.DIC.",
+   "venue": "Music & Dinner: Makao Street Food V.16.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103976943",
+   "soldOut": false
+  },
+  {
+   "id": "103971415",
+   "date": "2022-12-17T23:30:00",
+   "end": null,
+   "title": "Sábado en El Puntazo",
+   "venue": "Sábado en El Puntazo",
+   "city": "Santa Cruz de Mudela",
+   "region": "",
+   "country": "Spain",
+   "description": "COPAS PREMIUM - ANIMACIÓN\nCOMERCIAL - LATINO - TECH HOUSE - ÉXITOS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103971415",
+   "soldOut": false
+  },
+  {
+   "id": "103977053",
+   "date": "2022-12-23T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.23.DIC.",
+   "venue": "Music & Dinner: Makao Street Food V.23.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103977053",
+   "soldOut": false
+  },
+  {
+   "id": "103977064",
+   "date": "2022-12-24T12:00:00",
+   "end": null,
+   "title": "Makao Street Food SPECIAL XMAS 24.DIC.",
+   "venue": "Makao Street Food SPECIAL XMAS 24.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "Disfruta de la comida del día de nochebuena con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103977064",
+   "soldOut": false
+  },
+  {
+   "id": "103977054",
+   "date": "2022-12-30T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.30.DIC.",
+   "venue": "Music & Dinner: Makao Street Food V.30.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103977054",
+   "soldOut": false
+  },
+  {
+   "id": "103977066",
+   "date": "2022-12-31T12:00:00",
+   "end": null,
+   "title": "Makao Street Food SPECIAL NEW YEAR'S EVE 31.DIC.",
+   "venue": "Makao Street Food SPECIAL NEW YEAR'S EVE 31.DIC.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "Disfruta de la comida del día de nochevieja con música ambiente mezclada en directo.\nVILLANCICOS - APERITIVOS - CERVEZA - COMIDAS - COPAS\n\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/103977066",
+   "soldOut": false
+  },
+  {
+   "id": "104033179",
+   "date": "2023-01-13T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.13.ENE.",
+   "venue": "Music & Dinner: Makao Street Food V.13.ENE.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104033179",
+   "soldOut": false
+  },
+  {
+   "id": "104058220",
+   "date": "2023-01-20T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.20.ENE.",
+   "venue": "Music & Dinner: Makao Street Food V.20.ENE.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104058220",
+   "soldOut": false
+  },
+  {
+   "id": "104083290",
+   "date": "2023-01-27T21:00:00",
+   "end": null,
+   "title": "Music & Dinner: Makao Street Food V.27.ENE.",
+   "venue": "Music & Dinner: Makao Street Food V.27.ENE.",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "La experiencia de cenas únicas con música ambiente mezclada en directo.\nDEEP HOUSE - SLAP HOUSE - DANCE POP - POP LATINO",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104083290",
+   "soldOut": false
+  },
+  {
+   "id": "104156374",
+   "date": "2023-02-18T23:00:00",
+   "end": null,
+   "title": "CARNAVAL PARTY Fiesta de Inauguración",
+   "venue": "CARNAVAL PARTY Fiesta de Inauguración",
+   "city": "Miguelturra",
+   "region": "",
+   "country": "Spain",
+   "description": "Nueva zona en Miguelturra dedicada al ocio nocturno de la localidad. Fiesta temática con sorpresas.\nURBAN - LATINO - EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104156374",
+   "soldOut": false
+  },
+  {
+   "id": "104243638",
+   "date": "2023-03-17T23:00:00",
+   "end": null,
+   "title": "PANTERA CLUB CIUDAD REAL: 17 de marzo de 2023",
+   "venue": "PANTERA CLUB CIUDAD REAL: 17 de marzo de 2023",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "MUSIC BY:\n\n- MARTTIN\n- JOE POP\n- Z4YLON\n\nNU DISCO - HOUSE - FUNNKY\n\nRopero Gratuito - Láser Show - Iluminación",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104243638",
+   "soldOut": false
+  },
+  {
+   "id": "104289999",
+   "date": "2023-04-01T23:30:00",
+   "end": null,
+   "title": "Sábado de Pre Semana Santa en La Fragua Disco Pub",
+   "venue": "Sábado de Pre Semana Santa en La Fragua Disco Pub",
+   "city": "La Calzada de Calatrava",
+   "region": "",
+   "country": "Spain",
+   "description": "Especial Semana Santa en La Fragua Disco Pub, en Calzada de Calatrava (Ciudad Real, Spain)\n\nURBAN - LATINO- EDM - HITS\n\nCOPAS PREMIUM - DJ SHOW EN DIRECTO - LIGHT SHOW - SORPRESAS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104289999",
+   "soldOut": false
+  },
+  {
+   "id": "104380618",
+   "date": "2023-04-28T23:30:00",
+   "end": null,
+   "title": "Viernes en Zona VIP Miguelturra",
+   "venue": "Viernes en Zona VIP Miguelturra",
+   "city": "Miguelturra",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO - EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104380618",
+   "soldOut": false
+  },
+  {
+   "id": "104380627",
+   "date": "2023-04-29T23:30:00",
+   "end": null,
+   "title": "Sábado en Tanteo The Club",
+   "venue": "Sábado en Tanteo The Club",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO- EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104380627",
+   "soldOut": false
+  },
+  {
+   "id": "104398154",
+   "date": "2023-05-05T23:30:00",
+   "end": null,
+   "title": "Viernes en Zona VIP Miguelturra",
+   "venue": "Viernes en Zona VIP Miguelturra",
+   "city": "Miguelturra",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO - EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104398154",
+   "soldOut": false
+  },
+  {
+   "id": "104398185",
+   "date": "2023-05-06T23:30:00",
+   "end": null,
+   "title": "Sábado en Envy Café Teatro Valdepeñas, Ciudad Real",
+   "venue": "Sábado en Envy Café Teatro Valdepeñas, Ciudad Real",
+   "city": "Valdepeñas",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO - EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104398185",
+   "soldOut": false
+  },
+  {
+   "id": "104534619",
+   "date": "2023-06-17T23:30:00",
+   "end": null,
+   "title": "Sábado en Tanteo The Club",
+   "venue": "Sábado en Tanteo The Club",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO- EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104534619",
+   "soldOut": false
+  },
+  {
+   "id": "104638825",
+   "date": "2023-07-30T19:00:00",
+   "end": null,
+   "title": "Holi Colours Festival Ciudad Real 2023",
+   "venue": "Holi Colours Festival Ciudad Real 2023",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "📣 Este próximo domingo, inundamos #CIUDADREAL de color! 🤩\nㅤ\n⏰ Domingo 30 Julio, 19:00h\n📍 Ciudad Real (Reciento Ferial)\n🎉 Lluvia de #colores , confetti, megatron, merchandising, dj, speaker, animación, regalos, globos gigantes.... y mucho más!! 😍\n\nMÚSICA A MANOS DE @Z4YLON 💿🎚🎛🎛🎚💿\n\n🎶COMERCIAL - LATINO - TECH HOUSE - ÉXITOS\nㅤ\n🆓ENTRADA GRATUITA PARA TODOS LOS PÚBLICOS\nㅤ\n🤍❕VEN VESTIDO DE BLANCO❕🤍\nㅤ\n🌈 Bolsas #holi gratis a los 1000 primeros asistentes.",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/104638825",
+   "soldOut": false
+  },
+  {
+   "id": "105001797",
+   "date": "2023-12-31T23:30:00",
+   "end": null,
+   "title": "COTILLÓN NOCHEVIEJA ESSENCIA CIUDAD REAL",
+   "venue": "COTILLÓN NOCHEVIEJA ESSENCIA CIUDAD REAL",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "✨FIESTA DE FIN DE AÑO TRAS LAS CAMPANADAS✨\n\n✈📍 ESSENCIA TORREÓN. Avenida del Torreón 11, CIUDAD REAL\n📆 31 DE DICIEMBRE TRAS LAS CAMPANADAS \n⌚ 00:45 - 07:00\n\n🎫 ENTRADAS 🎫\n- 1er Tramo: 50 entradas a 40€\n- 2do Tramo: 50 entradas a 45€\n-3er Tramo:  Hasta el 28 de diciembre: 50€\n- 4to Tramo: A partir del 28 de diciembre: 55€\n* Puntos de venta físicos en el local y digital por instagram @essenciaciudadreal *\n* Entradas disponibles hasta fin de existencias *\n\n💿🎛🎚🎛💿 · DJ · \n🎤 · ANIMACIÓN · \n🍾 · BARRA LIBRE · \n  💄· AMBIENTE EXCLUSIVO · \n  ⚜ · PRIMERAS MARCAS ·\n🍤 · APERITIVOS · \n  🍫 · CHOCOLATE CON CHURROS AL AMANECER · \n  🎁· MUCHAS SORPRESAS · \n\n¡NO TE LO PIERDAS Y EMPIEZA EL AÑO A LO GRANDE!\nSe reserva el derecho de admisión",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/105001797",
+   "soldOut": false
+  },
+  {
+   "id": "105678829",
+   "date": "2024-06-22T23:30:00",
+   "end": null,
+   "title": "SÁBADO EN LA ANTIGUA CLUB",
+   "venue": "SÁBADO EN LA ANTIGUA CLUB",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO- EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/105678829",
+   "soldOut": false
+  },
+  {
+   "id": "105700288",
+   "date": "2024-06-28T23:30:00",
+   "end": null,
+   "title": "VIERNES SUMMER VIBES EN LA ANTIGUA CLUB",
+   "venue": "VIERNES SUMMER VIBES EN LA ANTIGUA CLUB",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO- EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/105700288",
+   "soldOut": false
+  },
+  {
+   "id": "105700290",
+   "date": "2024-06-29T23:30:00",
+   "end": null,
+   "title": "SÁBADO SUMMER VIBES EN LA ANTIGUA CLUB",
+   "venue": "SÁBADO SUMMER VIBES EN LA ANTIGUA CLUB",
+   "city": "Ciudad Real",
+   "region": "",
+   "country": "Spain",
+   "description": "URBAN - LATINO- EDM - HITS",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/105700290",
+   "soldOut": false
+  },
+  {
+   "id": "107730694",
+   "date": "2025-12-31T23:30:00",
+   "end": null,
+   "title": "FIN DE AÑO 2025 EN VILLANUEVA DE CÓRDOBA",
+   "venue": "FIN DE AÑO 2025 EN VILLANUEVA DE CÓRDOBA",
+   "city": "Villanueva de Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "Despidamos el año como se merece.\n\nEste 31 de diciembre, vive una Fiesta de Fin de Año 2025 a la altura de la noche más esperada del año.\nMúsica, ambiente y una experiencia pensada para disfrutar hasta el amanecer.\n\n🎧 DJ Z4YLON\n🍸 Bebidas de primeras marcas\n🌭 Servicio de perritos calientes\n🥤 Refrescos de botellín\n🔊 2 zonas de sonido\n⏰ De 00:30 a 07:30 h\n\n📍 Terraza Oasis\nC/ Talabarteros, 51 · Villanueva de Córdoba\n\n🎟 Entradas anticipadas: 25 € (4 consumiciones)\n⚠️ Últimas entradas disponibles\n\nOrganiza: Tangay Event & Planning\n🚫 Entrada prohibida a menores de 16 años\n\n#FinDeAño2025 #Nochevieja",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/107730694",
+   "soldOut": false
+  },
+  {
+   "id": "108247176",
+   "date": "2026-03-20T17:00:00",
+   "end": null,
+   "title": "Tardeo Afterwork en Sojo Mercado",
+   "venue": "Tardeo Afterwork en Sojo Mercado",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "NU DISCO - AFRO HOUSE - LATIN HOUSE - TECH HOUSE - ELECTROLATINO - ELECTRO POP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247176",
+   "soldOut": false
+  },
+  {
+   "id": "108247183",
+   "date": "2026-03-28T17:00:00",
+   "end": null,
+   "title": "Tardeo Afterwork en Sojo Mercado",
+   "venue": "Tardeo Afterwork en Sojo Mercado",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "NU DISCO - AFRO HOUSE - LATIN HOUSE - TECH HOUSE - ELECTROLATINO - ELECTRO POP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247183",
+   "soldOut": false
+  },
+  {
+   "id": "108247196",
+   "date": "2026-04-01T22:00:00",
+   "end": null,
+   "title": "Miercoles Noche en Sojo Mercado",
+   "venue": "Miercoles Noche en Sojo Mercado",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "NU DISCO - AFRO HOUSE - LATIN HOUSE - TECH HOUSE - ELECTROLATINO - ELECTRO POP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247196",
+   "soldOut": false
+  },
+  {
+   "id": "108247200",
+   "date": "2026-04-04T17:00:00",
+   "end": null,
+   "title": "Tardeo Afterwork en Sojo Mercado",
+   "venue": "Tardeo Afterwork en Sojo Mercado",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "NU DISCO - AFRO HOUSE - LATIN HOUSE - TECH HOUSE - ELECTROLATINO - ELECTRO POP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247200",
+   "soldOut": false
+  },
+  {
+   "id": "108247203",
+   "date": "2026-04-10T22:00:00",
+   "end": null,
+   "title": "Viernes Noche en Sojo Mercado",
+   "venue": "Viernes Noche en Sojo Mercado",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "NU DISCO - AFRO HOUSE - LATIN HOUSE - TECH HOUSE - ELECTROLATINO - ELECTRO POP",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247203",
+   "soldOut": false
+  },
+  {
+   "id": "108247262",
+   "date": "2026-04-11T23:30:00",
+   "end": null,
+   "title": "EVENTO PRIVADO: 18 Cumpleaños Puesta de Largo",
+   "venue": "EVENTO PRIVADO: 18 Cumpleaños Puesta de Largo",
+   "city": "Sevilla",
+   "region": "",
+   "country": "Spain",
+   "description": "REGGAETON - RUMBA - SOCA - ELECTROLATINO - SEVILLANA - ANIMACIÓN",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108247262",
+   "soldOut": false
+  },
+  {
+   "id": "108248889",
+   "date": "2026-04-25T16:30:00",
+   "end": null,
+   "title": "EVENTO PRIVADO: Comunión",
+   "venue": "EVENTO PRIVADO: Comunión",
+   "city": "Córdoba",
+   "region": "",
+   "country": "Spain",
+   "description": "",
+   "lineup": [
+    "Z4YLON"
+   ],
+   "url": "https://www.bandsintown.com/e/108248889",
+   "soldOut": false
+  }
+ ]
+}

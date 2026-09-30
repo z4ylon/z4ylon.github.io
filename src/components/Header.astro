@@ -1,0 +1,114 @@
+---
+import { u } from '@/lib/url';
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { nav, socials, site } from '@/data/site';
+import logo from '@/assets/brand/logo-full.png';
+
+interface Props {
+  overlap?: boolean;
+}
+const { overlap = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const home = u('/');
+const isCurrent = (href: string) => (href === home ? path === home : path === href || path.startsWith(`${href}/`));
+---
+
+<header class="site-header" data-overlap={overlap || undefined}>
+  <div class="site-header__inner container">
+    <a href={u('/')} class="site-header__logo" aria-label={`${site.name} — inicio`}>
+      <Image src={logo} alt="" width={132} height={58} loading="eager" fetchpriority="high" layout="fixed" />
+    </a>
+
+    <nav class="site-nav" aria-label="Principal">
+      <ul role="list">
+        {
+          nav.slice(1, -1).map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href={u('/contacto')} class="btn btn--sm site-header__cta" aria-current={isCurrent(u('/contacto')) ? 'page' : undefined}>Contratar</a>
+      <button type="button" class="menu-btn" aria-controls="mobile-nav" aria-expanded="false" data-menu-open>
+        <Icon name="menu" size={24} />
+        <span class="sr-only">Abrir menú</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="mobile-nav" class="mobile-nav" aria-label="Menú">
+  <div class="mobile-nav__top container">
+    <span class="eyebrow">Menú</span>
+    <button type="button" class="menu-btn" data-menu-close>
+      <Icon name="close" size={24} />
+      <span class="sr-only">Cerrar menú</span>
+    </button>
+  </div>
+  <nav class="mobile-nav__links container" aria-label="Principal (móvil)">
+    <ol role="list">
+      {
+        nav.map((item, i) => (
+          <li>
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              <span class="mono" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+  <div class="mobile-nav__foot container">
+    <a class="btn" href={u('/contacto')}>Contratar show</a>
+    <ul role="list" class="social-row" aria-label="Redes sociales">
+      {
+        socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.label} (nueva pestaña)`}>
+              <Icon name={s.id} size={20} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</dialog>
+
+<script>
+  function setup() {
+    const header = document.querySelector<HTMLElement>('.site-header');
+    const dialog = document.getElementById('mobile-nav') as HTMLDialogElement | null;
+    const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+    if (!header || !dialog || !openBtn) return;
+
+    const onScroll = () => header.toggleAttribute('data-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('astro:before-swap', () => window.removeEventListener('scroll', onScroll), { once: true });
+
+    openBtn.addEventListener('click', () => {
+      dialog.showModal();
+      openBtn.setAttribute('aria-expanded', 'true');
+    });
+    const close = () => {
+      dialog.close();
+      openBtn.setAttribute('aria-expanded', 'false');
+    };
+    dialog.querySelector('[data-menu-close]')?.addEventListener('click', close);
+    dialog.addEventListener('close', () => openBtn.setAttribute('aria-expanded', 'false'));
+    dialog.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) close();
+    });
+  }
+  document.addEventListener('astro:page-load', setup);
+</script>

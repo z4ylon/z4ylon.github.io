@@ -1,0 +1,551 @@
+---
+import { u } from '@/lib/url';
+import { Image, Picture } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import Icon from '@/components/Icon.astro';
+import MediaGallery from '@/components/react/MediaGallery';
+import { site, bio, stats, highlights, residencies, equipment, rider, brandGuidelines, brands, flyerCaptions } from '@/data/site';
+import { img, imageItem } from '@/lib/media';
+
+const dossierTitles = ['Portada', 'All in one', 'Esencia', 'Hitos', 'Música', 'Marca', 'Diseño', 'Media', 'Equipo', 'Rider', 'FAQs', 'Social y contacto', 'Contraportada'];
+const dossier = await Promise.all(
+  dossierTitles.map((t, i) =>
+    imageItem(`dossier/page-${String(i + 1).padStart(2, '0')}.jpg`, `Dossier oficial 2026, página ${i + 1}: ${t}`, { caption: `${String(i + 1).padStart(2, '0')} · ${t}`, widths: [300, 450, 600] }),
+  ),
+);
+
+const pressPhotos = await Promise.all([
+  imageItem('presskit/photo-2026.jpg', 'Z4YLON sentado en el escenario con luces rojas y focos (retrato oficial 2026)', { download: true }),
+  imageItem('presskit/photo-rojo.jpg', 'Z4YLON con gafas de sol sobre fondo rojo intenso', { download: true }),
+  imageItem('presskit/photo-23.jpg', 'Z4YLON en silueta sobre fondo rojo', { download: true }),
+  imageItem('presskit/photo-redes.jpg', 'Retrato de Z4YLON sobre fondo blanco con las manos juntas', { download: true }),
+  imageItem('presskit/photo-009.jpg', 'Z4YLON sentado junto a un estanque de agua turquesa', { download: true }),
+  imageItem('presskit/holi-2023.jpeg', 'Z4YLON de espaldas con camiseta manchada de polvo de colores en Holi Colours Festival 2023', { download: true }),
+  imageItem('home/home-02.jpeg', 'Z4YLON mezclando en su Denon Prime 4 bajo luz azul', { download: true }),
+  imageItem('home/home-01.jpeg', 'Z4YLON en cabina durante el Holi Colours Festival de Ciudad Real', { download: true }),
+  imageItem('home/home-09.jpg', "Z4YLON con el público en K'NOAS Festival, Aranjuez", { download: true }),
+]);
+
+const flyers = await Promise.all([
+  imageItem('presskit/extra.jpg', 'Flyer: Fiesta de Fin de Año 2025 · Terraza Oasis, Villanueva de Córdoba', { widths: [280, 420, 600] }),
+  ...flyerCaptions.map((a, i) => imageItem(`flyers/flyer-${String(i + 1).padStart(2, '0')}.webp`, `Flyer: ${a}`, { widths: [280, 420, 600] })),
+]);
+
+const brandAssets = [
+  { label: 'Logo completo (PNG transparente)', src: img('brand/logo-full.png'), file: u('/press/z4ylon-logo.png') },
+  { label: 'Isotipo 3D (PNG transparente)', src: img('brand/isotipo-3d.png'), file: u('/press/z4ylon-isotipo.png') },
+];
+---
+
+<Base title="Press kit" description="Press kit oficial de Z4YLON: biografía, hitos, dossier 2026 en PDF, fotos de prensa en alta resolución, flyers, equipo, rider técnico y guía de uso de marca.">
+  <PageHero
+    eyebrow="Press kit 2026"
+    title="Press <span class='accent'>kit</span>"
+    lead="Todo lo que promotores, medios y marcas necesitan: biografía, hitos, material gráfico en alta resolución, rider técnico y guía de marca."
+    image={img('presskit/photo-rojo.jpg')}
+    imagePosition="center 25%"
+    sections={[
+      { href: '#esencia', label: 'Esencia' },
+      { href: '#hitos', label: 'Hitos' },
+      { href: '#dossier', label: 'Dossier' },
+      { href: '#media', label: 'Fotos' },
+      { href: '#flyers', label: 'Flyers' },
+      { href: '#rider', label: 'Equipo y rider' },
+      { href: '#marca', label: 'Marca' },
+    ]}
+  >
+    <div class="hero-actions">
+      <a class="btn" href={site.dossierPdf} download>
+        <Icon name="download" /> Descargar dossier <span class="btn-meta">PDF · 16 MB</span>
+      </a>
+      <a class="btn btn--ghost" href="#dossier"><Icon name="eye" /> Ver online</a>
+    </div>
+  </PageHero>
+
+  <!-- ESENCIA -->
+  <section class="section" id="esencia" aria-labelledby="esencia-title">
+    <div class="container bio">
+      <figure class="bio__photo" data-reveal>
+        <Picture src={img('presskit/photo-23.jpg')} formats={['avif', 'webp']} widths={[400, 640, 900]} sizes="(min-width: 900px) 36vw, 90vw" alt="Z4YLON en silueta sobre fondo rojo" />
+      </figure>
+      <div class="bio__text">
+        <SectionHeader eyebrow="Esencia" title="Jonathan, alias <span class='accent'>Z4YLON</span>" id="esencia-title" />
+        <div class="prose" data-reveal>
+          <p class="lead">{bio.lead}</p>
+          {bio.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HITOS -->
+  <section class="section section--tight" id="hitos" aria-labelledby="hitos-title">
+    <div class="container">
+      <SectionHeader eyebrow="Hitos" title="Trayectoria" id="hitos-title" />
+      <dl class="kpis" data-reveal>
+        {
+          stats.map((s) => (
+            <div>
+              <dt>{s.label}</dt>
+              <dd>
+                {s.prefix}
+                {new Intl.NumberFormat('es-ES').format(s.value)}
+              </dd>
+            </div>
+          ))
+        }
+        <div>
+          <dt>colaboración de marca</dt>
+          <dd class="kpis__text">Martin Miller’s Gin</dd>
+        </div>
+      </dl>
+
+      <div class="hitos-cols">
+        <div data-reveal>
+          <h3 class="h3 col-title">Eventos destacados</h3>
+          <ul role="list" class="line-list">
+            {
+              highlights.map((h) => (
+                <li>
+                  <span>
+                    <strong>{h.event} {h.year}</strong> · {h.place}
+                  </span>
+                  <span class="mono muted">{h.audience}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div data-reveal style="--delay:100ms">
+          <h3 class="h3 col-title">Residencias anteriores</h3>
+          <ul role="list" class="line-list">
+            {
+              residencies.map((r) => (
+                <li>
+                  <strong>{r.name}</strong>
+                  <span class="muted">{r.place}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <h3 class="h3 col-title">Salas, marcas y eventos</h3>
+          <ul role="list" class="tag-cloud">{brands.map((b) => <li class="chip">{b}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOSSIER -->
+  <section class="section" id="dossier" aria-labelledby="dossier-title">
+    <div class="container">
+      <div class="split">
+        <SectionHeader eyebrow="Dossier oficial" title="Consúltalo online" id="dossier-title" lead="Pulsa cualquier página para verla a pantalla completa y pasa de una a otra con las flechas del teclado o deslizando." />
+        <a class="btn" href={site.dossierPdf} download><Icon name="download" /> Descargar PDF</a>
+      </div>
+      <MediaGallery client:idle={{ timeout: 1500 }} items={dossier} layout="reel" ratio="1448 / 2048" label="Páginas del dossier oficial" sizes="260px" />
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section class="section" id="media" aria-labelledby="media-title">
+    <div class="container">
+      <SectionHeader eyebrow="Más de Z4YLON" title="Fotos de prensa" id="media-title" lead="Imágenes oficiales para cartelería y medios. Abre una foto y usa el botón de descarga para obtenerla en alta resolución." />
+      <MediaGallery client:idle={{ timeout: 1500 }} items={pressPhotos} layout="masonry" min="260px" label="Fotos de prensa" sizes="(min-width: 1024px) 30vw, 50vw" />
+
+      <div class="brand-assets" data-reveal>
+        {
+          brandAssets.map((b) => (
+            <a class="asset" href={b.file} download>
+              <span class="asset__img">
+                <Image src={b.src} alt="" width={240} />
+              </span>
+              <span class="asset__label">{b.label}</span>
+              <Icon name="download" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FLYERS -->
+  <section class="section" id="flyers" aria-labelledby="flyers-title">
+    <div class="container">
+      <SectionHeader eyebrow="Flyers de eventos" title="En cartel" id="flyers-title" lead="Una muestra de los carteles de sus shows, diseñados en su mayoría por el propio artista." />
+      <MediaGallery client:idle={{ timeout: 1500 }} items={flyers} layout="grid" ratio="9 / 16" min="170px" label="Flyers de eventos" sizes="(min-width: 1024px) 16vw, 45vw" />
+    </div>
+  </section>
+
+  <!-- EQUIPO + RIDER -->
+  <section class="section" id="rider" aria-labelledby="rider-title">
+    <div class="container">
+      <SectionHeader eyebrow="Equipo y rider" title="Técnica al servicio del show" id="rider-title" />
+      <div class="gear" id="equipo" data-reveal>
+        <div class="gear__main">
+          <p class="eyebrow">Mesa de mezclas</p>
+          <h3 class="gear__name">{equipment.mixer.name}</h3>
+          <p class="prose">{equipment.mixer.text}</p>
+          <ul role="list" class="gear__features">
+            {
+              equipment.mixer.features.map((f) => (
+                <li>
+                  <Icon name="check" size={16} /> {f}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="gear__side">
+          <p class="eyebrow">Auriculares</p>
+          <ul role="list" class="line-list">
+            {
+              equipment.headphones.map((h) => (
+                <li>
+                  <strong>{h}</strong>
+                  <Icon name="headphones" size={18} />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="rider">
+        <div data-reveal>
+          <h3 class="h3 col-title">El organizador deberá facilitar</h3>
+          <ol class="rider__list">{rider.required.map((r) => <li>{r}</li>)}</ol>
+          <p class="rider__note"><Icon name="zap" size={16} /> {rider.note}</p>
+        </div>
+        <div data-reveal style="--delay:100ms">
+          <h3 class="h3 col-title">Recomendado</h3>
+          <ul class="rider__list rider__list--opt">{rider.optional.map((r) => <li>{r}</li>)}</ul>
+          <a class="btn btn--ghost btn--sm" href={site.dossierPdf} download><Icon name="file" /> Rider completo en el dossier</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCA -->
+  <section class="section" id="marca" aria-labelledby="marca-title">
+    <div class="container marca">
+      <div>
+        <SectionHeader eyebrow="Marca" title="Guía de uso en cartelería" id="marca-title" lead={brandGuidelines.intro} />
+        <ol role="list" class="rules">
+          {
+            brandGuidelines.rules.map((r, i) => (
+              <li data-reveal style={`--delay:${i * 80}ms`}>
+                <span class="rules__n mono">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 class="rules__title">{r.title}</h3>
+                  <p>{r.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="rules__outro">{brandGuidelines.outro}</p>
+      </div>
+      <figure class="marca__logos" data-reveal>
+        <Image src={img('brand/logo-3d-bevel.png')} alt="Logo oficial de Z4YLON en versión 3D" widths={[400, 800]} sizes="(min-width: 900px) 40vw, 90vw" />
+        <Image src={img('brand/isotipo-3d.png')} alt="Isotipo reducido de Z4YLON en 3D" widths={[160, 320]} sizes="160px" class="marca__iso" />
+        <figcaption class="muted">Versiones completa y reducida del logo oficial en 3D.</figcaption>
+      </figure>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.85;
+    letter-spacing: 0.04em;
+  }
+  .bio {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .bio__photo {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    box-shadow: 0 40px 80px -40px rgb(212 18 74 / 0.6);
+  }
+  .bio__photo :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-l);
+  }
+  .kpis > div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    padding: 1.25rem;
+    border-right: 1px solid var(--line);
+  }
+  .kpis > div:last-child {
+    border-right: 0;
+  }
+  .kpis dt {
+    font-size: 0.85rem;
+    color: var(--text-2);
+  }
+  .kpis dd {
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    line-height: 1;
+  }
+  .kpis__text {
+    font-size: var(--step-1) !important;
+    font-variation-settings: 'wdth' 80 !important;
+  }
+  .hitos-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-l);
+  }
+  .col-title {
+    margin-bottom: 0.75rem;
+  }
+  * + .col-title {
+    margin-top: var(--space-m);
+  }
+  .line-list {
+    border-top: 1px solid var(--line);
+  }
+  .line-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .split {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .split :global(.section-header) {
+    margin-bottom: 3rem;
+  }
+  .brand-assets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 1rem;
+    margin-top: var(--space-l);
+  }
+  .asset {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
+  .asset:hover {
+    border-color: var(--brand-hi);
+    background: var(--surface);
+  }
+  .asset__img {
+    height: 64px;
+    display: grid;
+    place-items: center;
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+  .asset__img :global(img) {
+    max-height: 48px;
+    width: auto;
+  }
+  .asset__label {
+    font-weight: 600;
+  }
+  .gear {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--space-l);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-l);
+    background: linear-gradient(160deg, var(--surface), var(--bg));
+    margin-bottom: var(--space-xl);
+  }
+  .gear__main {
+    display: grid;
+    gap: 1rem;
+  }
+  .gear__name {
+    font-size: var(--step-4);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    text-transform: uppercase;
+  }
+  .gear__features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+  }
+  .gear__features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+  .gear__features :global(svg) {
+    color: var(--brand-hi);
+  }
+  .gear__side {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+  }
+  .rider {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--space-l);
+  }
+  .rider__list {
+    display: grid;
+    gap: 0.6rem;
+    padding-left: 1.4rem;
+    color: var(--text-2);
+    margin-bottom: 1.25rem;
+  }
+  .rider__list li::marker {
+    color: var(--brand-hi);
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+  .rider__note {
+    display: flex;
+    gap: 0.6rem;
+    padding: 1rem;
+    border-left: 2px solid var(--brand);
+    background: rgb(212 18 74 / 0.08);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.92rem;
+    color: var(--text-2);
+  }
+  .rider__note :global(svg) {
+    flex: none;
+    color: var(--brand-hi);
+    margin-top: 0.2rem;
+  }
+  .marca {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+  .rules {
+    border-top: 1px solid var(--line);
+  }
+  .rules li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--text-2);
+  }
+  .rules__n {
+    color: var(--brand-hi);
+    font-size: 0.85rem;
+    padding-top: 0.2rem;
+  }
+  .rules__title {
+    font-size: var(--step-1);
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+  .rules__outro {
+    margin-top: 1.25rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .marca__logos {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+    padding: var(--space-l);
+    border-radius: var(--radius-l);
+    background:
+      radial-gradient(60% 60% at 50% 40%, rgb(212 18 74 / 0.25), transparent 70%),
+      var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .marca__logos :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .marca__logos :global(.marca__iso) {
+    width: 110px;
+  }
+  @media (max-width: 1000px) {
+    .kpis {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .kpis > div {
+      border-bottom: 1px solid var(--line);
+    }
+  }
+  @media (max-width: 860px) {
+    .bio,
+    .hitos-cols,
+    .gear,
+    .rider,
+    .marca {
+      grid-template-columns: 1fr;
+    }
+    .bio__photo {
+      position: relative;
+      top: 0;
+      max-width: 460px;
+    }
+    .kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 480px) {
+    .gear__features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  items: string[];
+  variant?: 'brand' | 'outline';
+  label?: string;
+}
+const { items, variant = 'brand', label = 'Estilos musicales' } = Astro.props;
+---
+
+<div class:list={['marquee', `marquee--${variant}`]}>
+  <p class="sr-only">{label}: {items.join(', ')}.</p>
+  <div class="marquee__track" aria-hidden="true">
+    {
+      [0, 1].map(() => (
+        <ul role="list" class="marquee__group">
+          {items.map((it) => (
+            <li>
+              {it}
+              <span class="marquee__sep">✦</span>
+            </li>
+          ))}
+        </ul>
+      ))
+    }
+  </div>
+</div>

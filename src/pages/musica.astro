@@ -1,0 +1,247 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import Icon from '@/components/Icon.astro';
+import PlaySessionButton from '@/components/react/PlaySessionButton';
+import SpotifyEmbed from '@/components/react/SpotifyEmbed';
+import { sessions, playlists, musicStyle, genres, socials } from '@/data/site';
+import { img } from '@/lib/media';
+import { formatDuration, mixcloudPage } from '@/lib/player';
+import { longDate } from '@/lib/format';
+
+const covers = { afro: 'music/mc-afro-2026.jpg', techbass: 'music/mc-techbass-2023.jpg', zoewie: 'music/mc-zoewie-2018.jpg' } as const;
+const playlistCovers = await Promise.all(
+  playlists.map(async (p) => {
+    const r = await getImage({ src: img(`music/playlist-${p.cover}.png`), widths: [480, 800, 1200], format: 'webp' });
+    return { src: r.src, srcset: r.srcSet.attribute };
+  }),
+);
+const listen = socials.filter((s) => ['spotify', 'mixcloud', 'soundcloud', 'twitch'].includes(s.id));
+---
+
+<Base title="Música: sesiones DJ y playlists" description="Escucha las sesiones DJ de Z4YLON (Afro House, Melodic Techno, Tech House, Bass House) y las playlists #THEZ4YLONPLAYLIST en Spotify.">
+  <PageHero
+    eyebrow="Música"
+    title="Sesiones <span class='outline-text'>&amp;</span> playlists"
+    lead={musicStyle[0]}
+    image={img('music/vinyl-bg.jpg')}
+    imagePosition="right center"
+    sections={[
+      { href: '#sesiones', label: 'Sesiones DJ' },
+      { href: '#playlists', label: 'Playlists' },
+    ]}
+  />
+
+  <section class="section" id="sesiones" aria-labelledby="sesiones-title">
+    <div class="container">
+      <SectionHeader eyebrow="Sesiones DJ" title="Dale al play" id="sesiones-title" lead="El reproductor se queda abajo y la música sigue sonando mientras navegas por la web." />
+      <ul role="list" class="mixes">
+        {
+          sessions.map((s, i) => (
+            <li class:list={['mix', i === 0 && 'mix--feature']} data-reveal style={`--delay:${i * 80}ms`}>
+              <div class="mix__cover">
+                <Image src={img(covers[s.cover])} alt={`Portada de ${s.title}`} widths={[320, 520, 800]} sizes={i === 0 ? '(min-width: 900px) 40vw, 90vw' : '(min-width: 900px) 25vw, 90vw'} />
+                <div class="mix__play">
+                  <PlaySessionButton client:idle={{ timeout: 1500 }} sessionKey={s.key} title={s.title} variant="round" />
+                </div>
+              </div>
+              <div class="mix__body">
+                <p class="eyebrow">{s.edition}</p>
+                <h3 class="mix__title">{s.title}</h3>
+                <p class="mix__meta">
+                  <span><Icon name="calendar" size={15} /> <time datetime={s.date}>{longDate(s.date)}</time></span>
+                  <span><Icon name="clock" size={15} /> {formatDuration(s.seconds)}</span>
+                </p>
+                <ul role="list" class="mix__tags" aria-label="Estilos">
+                  {s.tags.map((t) => <li class="chip">{t}</li>)}
+                </ul>
+                <a class="link-arrow" href={mixcloudPage(s.key)} target="_blank" rel="noopener noreferrer">
+                  Abrir en Mixcloud<span class="sr-only"> (nueva pestaña)</span> <Icon name="arrowUpRight" />
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tight style" aria-labelledby="estilo-title">
+    <div class="container style__grid">
+      <div data-reveal>
+        <p class="eyebrow">Estilo</p>
+        <h2 class="h2" id="estilo-title">DJ Open Format</h2>
+      </div>
+      <div class="prose" data-reveal style="--delay:100ms">
+        {musicStyle.slice(1).map((p) => <p>{p}</p>)}
+        <ul role="list" class="style__genres" aria-label="Géneros habituales">
+          {genres.map((g) => <li class="chip">{g}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="playlists" aria-labelledby="playlists-title">
+    <div class="container">
+      <SectionHeader eyebrow="Spotify" title="#THEZ4YLONPLAYLIST" id="playlists-title" lead="Selecciones mensuales con los temas que están sonando en cabina." />
+      <div class="playlists">
+        {playlists.map((p, i) => <SpotifyEmbed client:idle={{ timeout: 1500 }} id={p.id} title={p.title} edition={p.edition} cover={playlistCovers[i]} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="listen-title">
+    <div class="container">
+      <h2 class="h3 listen-title" id="listen-title">Escucha y sigue a Z4YLON en</h2>
+      <ul role="list" class="listen">
+        {
+          listen.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener noreferrer">
+                <Icon name={s.id} size={28} />
+                <span>
+                  <strong>{s.label}</strong>
+                  <span class="muted">{s.handle}</span>
+                </span>
+                <Icon name="arrowUpRight" size={18} />
+                <span class="sr-only"> (nueva pestaña)</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .mixes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-l) clamp(1rem, 3vw, 2.5rem);
+  }
+  .mix {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+  }
+  .mix--feature {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1.25rem, 4vw, 3.5rem);
+    padding-bottom: var(--space-l);
+    border-bottom: 1px solid var(--line);
+  }
+  .mix__cover {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .mix__cover :global(img) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+  }
+  .mix:hover .mix__cover :global(img) {
+    transform: scale(1.04);
+  }
+  .mix__play {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1.25rem;
+  }
+  .mix__body {
+    display: grid;
+    gap: 0.8rem;
+    justify-items: start;
+  }
+  .mix__title {
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 66;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+  .mix:not(.mix--feature) .mix__title {
+    font-size: var(--step-2);
+  }
+  .mix__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    color: var(--text-2);
+    font-size: 0.92rem;
+  }
+  .mix__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .mix__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .style__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-l);
+    padding-block: var(--space-l);
+    border-block: 1px solid var(--line);
+  }
+  .style__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-top: 0.5rem;
+  }
+  .playlists {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-l) clamp(1rem, 3vw, 2.5rem);
+  }
+  .listen-title {
+    margin-bottom: 1.25rem;
+  }
+  .listen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 0.75rem;
+  }
+  .listen a {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+  }
+  .listen a > span {
+    display: grid;
+    line-height: 1.3;
+  }
+  .listen a:hover {
+    border-color: var(--brand-hi);
+    background: var(--surface);
+  }
+  @media (max-width: 800px) {
+    .mixes,
+    .playlists,
+    .mix--feature,
+    .style__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

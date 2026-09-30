@@ -1,0 +1,44 @@
+---
+import { u } from '@/lib/url';
+import Base from '@/layouts/Base.astro';
+import Icon from '@/components/Icon.astro';
+import { nav } from '@/data/site';
+---
+
+<Base title="Página no encontrada">
+  <section class="section nf">
+    <div class="container nf__inner">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="display">Track <span class="outline-text">no</span> encontrado</h1>
+      <p class="lead">La página que buscas no existe o ha cambiado de sitio. Vuelve a la pista:</p>
+      <ul role="list" class="nf__links">
+        {
+          nav.map((n) => (
+            <li>
+              <a class="btn btn--ghost btn--sm" href={n.href}>{n.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn" href={u('/')}>Ir al inicio <Icon name="arrowRight" /></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    min-height: 70vh;
+    display: grid;
+    align-items: center;
+  }
+  .nf__inner {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+  .nf__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

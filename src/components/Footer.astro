@@ -1,0 +1,89 @@
+---
+import { u } from '@/lib/url';
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { site, socials } from '@/data/site';
+import logo from '@/assets/brand/logo-full.png';
+
+const columns = [
+  { title: 'Shows', links: [['Próximos shows', '/shows'], ['Archivo de eventos', '/shows#archivo'], ['Mapa de eventos', '/shows#mapa']] },
+  { title: 'Música', links: [['Sesiones DJ', '/musica#sesiones'], ['Playlists', '/musica#playlists']] },
+  { title: 'Press Kit', links: [['Dossier oficial', '/press-kit#dossier'], ['Más de Z4YLON', '/press-kit#media'], ['Flyers de eventos', '/press-kit#flyers'], ['Rider técnico', '/press-kit#rider']] },
+  { title: 'Diseño gráfico', links: [['Logos', '/diseno#logos'], ['Visuales', '/diseno#visuales'], ['Flyers', '/diseno#flyers'], ['Merchandising', '/diseno#merch']] },
+  { title: 'Contacto', links: [['Contrata a Z4YLON', '/contacto'], ['FAQs', '/faqs'], ['Novedades', '/contacto#novedades']] },
+];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__cta" data-reveal>
+      <p class="eyebrow">¿Tienes un evento?</p>
+      <p class="site-footer__big">
+        Hagamos que se <span class="accent">recuerde.</span>
+      </p>
+      <div class="site-footer__cta-actions">
+        <a class="btn" href={u('/contacto')}>Contratar show <Icon name="arrowRight" /></a>
+        <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+          <Icon name="whatsapp" /> WhatsApp<span class="sr-only"> (nueva pestaña)</span>
+        </a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a href={u('/')} aria-label={`${site.name} — inicio`}>
+          <Image src={logo} alt="" width={180} height={79} layout="fixed" />
+        </a>
+        <p class="muted">{site.tagline}. Con base en {site.base}; shows en toda España.</p>
+        <address>
+          <a href={`mailto:${site.email}`}><Icon name="mail" size={16} /> {site.email}</a>
+          <a href={`tel:${site.phoneHref}`}><Icon name="phone" size={16} /> {site.phone}</a>
+        </address>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Mapa del sitio">
+        {
+          columns.map((c) => (
+            <div>
+              <h2 class="site-footer__title">{c.title}</h2>
+              <ul role="list">
+                {c.links.map(([label, href]) => (
+                  <li>
+                    <a href={u(href)}>{label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </nav>
+    </div>
+
+    <ul role="list" class="site-footer__socials" aria-label="Redes sociales">
+      {
+        socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener noreferrer">
+              <Icon name={s.id} size={18} />
+              <span>{s.label}</span>
+              <span class="sr-only"> (nueva pestaña)</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="site-footer__legal">
+      <p>© {year} {site.name}. Todos los derechos reservados.</p>
+      <ul role="list">
+        <li><a href={u('/legal#aviso-legal')}>Aviso legal</a></li>
+        <li><a href={u('/legal#privacidad')}>Privacidad</a></li>
+        <li><a href={u('/legal#cookies')}>Cookies</a></li>
+        <li><a href={u('/legal#condiciones')}>Condiciones de uso</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

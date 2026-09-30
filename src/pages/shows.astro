@@ -1,0 +1,244 @@
+---
+import Base from '@/layouts/Base.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import Icon from '@/components/Icon.astro';
+import ShowsExplorer from '@/components/react/ShowsExplorer';
+import { getEvents, upcomingUrl, cityStats, isPrivate } from '@/lib/events';
+import { site } from '@/data/site';
+import { img } from '@/lib/media';
+
+const events = await getEvents();
+const all = [...events.upcoming, ...events.past];
+const cities = cityStats(all);
+const max = cities[0]?.count ?? 1;
+const firstYear = Math.min(...all.map((e) => Number(e.date.slice(0, 4))));
+const years = new Date().getFullYear() - firstYear;
+const regions = [
+  { name: 'Comunidad de Madrid', match: ['Aranjuez', 'Madrid', 'Pinto', 'Alcorcón', 'Coslada', 'Campo Real'] },
+  { name: 'Castilla-La Mancha', match: ['Ciudad Real', 'Miguelturra', 'Valdepeñas', 'La Calzada de Calatrava', 'Santa Cruz de Mudela'] },
+  { name: 'Andalucía', match: ['Córdoba', 'Villanueva de Córdoba', 'Sevilla'] },
+].map((r) => ({ ...r, count: all.filter((e) => r.match.includes(e.city)).length }));
+
+const eventsLd = events.upcoming
+  .filter((e) => !isPrivate(e))
+  .map((e) => ({
+    '@context': 'https://schema.org',
+    '@type': 'MusicEvent',
+    name: e.title || e.venue,
+    startDate: e.date,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: { '@type': 'Place', name: e.venue, address: { '@type': 'PostalAddress', addressLocality: e.city, addressCountry: 'ES' } },
+    performer: { '@type': 'Person', name: site.name },
+    url: e.url ?? undefined,
+  }));
+---
+
+<Base
+  title="Shows y agenda"
+  description={`Próximos shows de Z4YLON y archivo completo de ${all.length} eventos desde ${firstYear}: clubs, festivales, fiestas patronales y eventos privados en Madrid, Ciudad Real y Córdoba.`}
+  jsonLd={eventsLd}
+>
+  <PageHero
+    eyebrow="Shows"
+    title="Agenda <span class='accent'>&amp;</span> trayectoria"
+    lead={`Próximas fechas y el archivo completo: ${all.length} shows en ${cities.length} ciudades desde ${firstYear}.`}
+    image={img('home/home-07.jpeg')}
+    imagePosition="center 30%"
+    sections={[
+      { href: '#agenda', label: 'Agenda' },
+      { href: '#mapa', label: 'Mapa de eventos' },
+    ]}
+  >
+    <div class="hero-stats">
+      <p><strong>{all.length}</strong> shows</p>
+      <p><strong>{cities.length}</strong> ciudades</p>
+      <p><strong>+{years}</strong> años en cabina</p>
+    </div>
+  </PageHero>
+
+  <section class="section" id="agenda" aria-labelledby="agenda-title">
+    <div class="container">
+      <span id="archivo"></span>
+      <SectionHeader eyebrow="Agenda" title="Próximos shows y archivo" id="agenda-title" lead="Datos sincronizados con Bandsintown. Los eventos privados se muestran sin datos personales." />
+      <ShowsExplorer client:load upcoming={events.upcoming} past={events.past} refreshUrl={upcomingUrl} bandsintownUrl={site.bandsintown} />
+    </div>
+  </section>
+
+  <section class="section map" id="mapa" aria-labelledby="mapa-title">
+    <div class="container map__grid">
+      <div>
+        <SectionHeader eyebrow="Mapa de eventos" title="Dónde ha sonado Z4YLON" id="mapa-title" lead="Número de shows por ciudad según el archivo público del artista." />
+        <ul role="list" class="regions" data-reveal>
+          {
+            regions.map((r) => (
+              <li>
+                <span class="regions__count">{r.count}</span>
+                <span class="regions__name">{r.name}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <ol role="list" class="bars" aria-label="Shows por ciudad" data-reveal>
+        {
+          cities.map((c) => (
+            <li>
+              <span class="bars__city">{c.city === 'Online' ? 'Online (Actuality FM)' : c.city}</span>
+              <span class="bars__track" aria-hidden="true">
+                <span class="bars__fill" style={`--w:${(c.count / max) * 100}%`} />
+              </span>
+              <span class="bars__n">
+                {c.count}
+                <span class="sr-only"> {c.count === 1 ? 'show' : 'shows'}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="follow-title">
+    <div class="container">
+      <div class="follow" data-reveal>
+        <span class="follow__icon" aria-hidden="true"><Icon name="bandsintown" size={28} /></span>
+        <div>
+          <h2 class="h3" id="follow-title">No te pierdas el próximo show</h2>
+          <p class="muted">Sigue a Z4YLON en Bandsintown y recibe un aviso por email y en el móvil cada vez que anuncie una fecha.</p>
+        </div>
+        <a class="btn" href={site.bandsintown} target="_blank" rel="noopener noreferrer">Seguir en Bandsintown<span class="sr-only"> (nueva pestaña)</span></a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-2);
+  }
+  .hero-stats strong {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--step-3);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    color: var(--text);
+    letter-spacing: 0;
+    line-height: 1;
+  }
+  .map__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .regions {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .regions li {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .regions__count {
+    font-size: var(--step-4);
+    font-weight: 900;
+    font-variation-settings: 'wdth' 62;
+    line-height: 1;
+    color: var(--brand-hi);
+    min-width: 2.5ch;
+  }
+  .regions__name {
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .bars {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .bars li {
+    display: grid;
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 2.5rem;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .bars__city {
+    color: var(--text-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bars__track {
+    height: 10px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    overflow: hidden;
+  }
+  .bars__fill {
+    display: block;
+    height: 100%;
+    width: var(--w);
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--brand-700), var(--brand-hi));
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .bars .bars__fill {
+      transform: scaleX(0);
+      transition: transform 1.2s var(--ease-out);
+    }
+    :global(.js) .bars:global(.is-visible) .bars__fill {
+      transform: scaleX(1);
+    }
+  }
+  .bars__n {
+    font-family: var(--font-mono);
+    text-align: right;
+  }
+  .follow {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, rgb(0 206 200 / 0.08), transparent 60%);
+  }
+  .follow__icon {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #00cec8;
+    color: #001b1a;
+  }
+  @media (max-width: 860px) {
+    .map__grid {
+      grid-template-columns: 1fr;
+    }
+    .follow {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+  }
+  @media (max-width: 480px) {
+    .bars li {
+      grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) 2rem;
+    }
+  }
+</style>
