@@ -39,7 +39,7 @@ jobs:
         env:
           # Dominio y subdirectorio que asigna GitHub Pages (usuario.github.io/repositorio o dominio propio)
           SITE_URL: ${{ steps.pages.outputs.origin }}
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          BASE_PATH: /
           # Demo: que los buscadores no la indexen. Quitar al publicar la versión oficial.
           PUBLIC_NOINDEX: 'true'
           PUBLIC_FORM_ENDPOINT: ${{ vars.PUBLIC_FORM_ENDPOINT }}
