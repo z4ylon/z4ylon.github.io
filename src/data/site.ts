@@ -70,7 +70,7 @@ export const highlights = [
   { event: 'Fiestas de San Fernando', place: 'Aranjuez', year: '2017', audience: '+4000 personas' },
   { event: 'Holi Colours Festival', place: 'Ciudad Real', year: '2023', audience: '+1800 personas' },
   { event: 'Holi Colours Festival', place: 'Ciudad Real', year: '2022', audience: '+1500 personas' },
-  { event: "K'NOAS Festival · I Edición", place: 'Aranjuez', year: '2016', audience: '+700 personas' },
+  { event: "K'NOAS Festival · I Edición", place: 'Aranjuez', year: '2016', audience: '+400 personas' },
   { event: 'Sala ON', place: 'Madrid', year: '2021', audience: '+700 personas' },
   { event: 'Actuality Summer Fest', place: 'Actuality FM (online)', year: '2018', audience: 'Picos de 200 oyentes por set' },
 ];
