@@ -62,6 +62,7 @@ const ld = [artistLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [
     <meta name="theme-color" content="#07070a" />
     <meta name="color-scheme" content="dark" />
     {import.meta.env.PUBLIC_NOINDEX === 'true' && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
     <link rel="icon" href={u('/favicon.png')} type="image/png" />
     <link rel="apple-touch-icon" href={u('/apple-touch-icon.png')} />
     <link rel="manifest" href={u('/manifest.webmanifest')} />
