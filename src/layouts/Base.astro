@@ -21,7 +21,7 @@ interface Props {
 
 const { title, description = site.description, image = '/og.jpg', jsonLd, heroOverlap = false } = Astro.props;
 const fullTitle = title ? `${title} · ${site.name}` : site.title;
-cconst canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/');
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/');
 const canonical = new URL(canonicalPath, Astro.site);
 const ogImage = new URL(u(image), Astro.site);
 
