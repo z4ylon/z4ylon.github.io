@@ -49,6 +49,7 @@ export const genres = [
   'NU DISCO',
   'R&B',
   'POP',
+  'ROCK',
   'AFRO HOUSE',
   'TECHNO',
   'INDIE',
