@@ -78,7 +78,7 @@
 }
 .thumb:hover::after,
 .thumb:focus-visible::after {
-  box-shadow: inset 0 0 0 2px var(--brand-hi);
+  box-shadow: inset 0 0 0 2px var(--brand-700);
 }
 .playBadge {
   position: absolute;
