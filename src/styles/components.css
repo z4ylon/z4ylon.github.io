@@ -545,10 +545,40 @@
   border-top: 1px solid var(--line);
 }
 .site-footer__cta {
+  position: relative;
   display: grid;
   gap: 1.25rem;
   justify-items: start;
-  padding-bottom: var(--space-xl);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--line);
+}
+
+.site-footer__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background: url('/images/home-03.jpg') center / cover no-repeat;
+  filter: grayscale(1);
+}
+
+.site-footer__cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgb(7 7 10 / 0.88) 0%,
+      rgb(7 7 10 / 0.68) 55%,
+      rgb(7 7 10 / 0.48) 100%
+    );
 }
 .site-footer__big {
   font-size: var(--step-5);
