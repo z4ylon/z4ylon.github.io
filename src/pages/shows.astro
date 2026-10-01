@@ -234,10 +234,17 @@ const eventsLd = events.upcoming
     background: #00cec8;
     color: #001b1a;
   }
-  @media (max-width: 860px) {
-    .map__grid {
-      grid-template-columns: 1fr;
-    }
+
+@media (min-width: 861px) {
+  .bars {
+    align-self: end;
+  }
+}
+
+@media (max-width: 860px) {
+  .map__grid {
+    grid-template-columns: 1fr;
+  }
     .follow {
       grid-template-columns: 1fr;
       justify-items: start;
