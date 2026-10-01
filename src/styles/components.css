@@ -549,11 +549,15 @@
   display: grid;
   gap: 1.25rem;
   justify-items: start;
-  padding: var(--space-xl);
+
+  padding-block: clamp(4rem, 8vw, 7rem);
+  padding-inline: var(--space-m);
+
+  margin-inline: calc(50% - 50vw);
   margin-bottom: var(--space-xl);
+
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid var(--line);
 }
 
 .site-footer__cta::before {
@@ -564,6 +568,7 @@
 
   background: url('/images/home-03.jpg') center / cover no-repeat;
   filter: grayscale(1);
+  transform: scale(1.02);
 }
 
 .site-footer__cta::after {
@@ -575,9 +580,9 @@
   background:
     linear-gradient(
       90deg,
-      rgb(7 7 10 / 0.88) 0%,
-      rgb(7 7 10 / 0.68) 55%,
-      rgb(7 7 10 / 0.48) 100%
+      rgb(7 7 10 / 0.82) 0%,
+      rgb(7 7 10 / 0.58) 50%,
+      rgb(7 7 10 / 0.72) 100%
     );
 }
 .site-footer__big {
