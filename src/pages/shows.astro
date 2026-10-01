@@ -85,7 +85,7 @@ const eventsLd = events.upcoming
         {
           cities.map((c) => (
             <li>
-              <span class="bars__city">{c.city === 'Online' ? 'Online (Actuality FM)' : c.city}</span>
+              <span class="bars__city">{c.city === 'Online' ? 'Digital' : c.city}</span>
               <span class="bars__track" aria-hidden="true">
                 <span class="bars__fill" style={`--w:${(c.count / max) * 100}%`} />
               </span>
