@@ -18,6 +18,7 @@ const regions = [
   { name: 'Comunidad de Madrid', match: ['Aranjuez', 'Madrid', 'Pinto', 'Alcorcón', 'Coslada', 'Campo Real'] },
   { name: 'Castilla-La Mancha', match: ['Ciudad Real', 'Miguelturra', 'Valdepeñas', 'La Calzada de Calatrava', 'Santa Cruz de Mudela'] },
   { name: 'Andalucía', match: ['Córdoba', 'Villanueva de Córdoba', 'Sevilla'] },
+  { name: 'Digital', match: ['Online'] },
 ].map((r) => ({ ...r, count: all.filter((e) => r.match.includes(e.city)).length }));
 
 const eventsLd = events.upcoming
