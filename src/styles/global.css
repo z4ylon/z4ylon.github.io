@@ -262,7 +262,7 @@ ol[role='list'] {
   font-family: var(--font-mono);
 }
 .accent {
-  color: var(--brand-hi);
+  color: var(--brand-700);
 }
 .outline-text {
   color: transparent;
