@@ -56,7 +56,7 @@
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--brand-hi);
+  border-color: var(--brand-700);
   box-shadow: 0 0 0 3px rgb(255 79 123 / 0.25);
 }
 .field [aria-invalid='true'] {
