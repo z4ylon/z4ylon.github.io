@@ -92,9 +92,9 @@
   place-items: center;
   padding-left: 3px;
   border-radius: 50%;
-  background: rgb(212 18 74 / 0.9);
+  background: var(--brand);
   color: #fff;
-  box-shadow: 0 0 0 8px rgb(212 18 74 / 0.2);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand) 20%, transparent);
   transition:
     transform 0.3s var(--ease-out),
     opacity 0.3s;
