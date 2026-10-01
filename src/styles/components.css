@@ -386,7 +386,7 @@
   font-size: 1.05rem;
 }
 .faq__item summary:hover .faq__q {
-  color: var(--brand-hi);
+  color: var(--brand-700);
 }
 .faq__icon {
   flex: none;
