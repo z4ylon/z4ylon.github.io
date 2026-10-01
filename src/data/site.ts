@@ -41,7 +41,22 @@ export const socials = [
   { id: 'soundcloud', label: 'SoundCloud', href: 'https://soundcloud.com/z4ylon', handle: 'z4ylon' },
 ] as const;
 
-export const genres = ['Tech House', 'Afro House', 'Techno', 'Bass House', 'Latin House', 'Nu Disco', 'Urban', 'Electrolatino', 'Open Format'];
+export const genres = [
+  'URBAN',
+  'HOUSE',
+  'LATIN',
+  'BASS',
+  'NU DISCO',
+  'R&B',
+  'POP',
+  'AFRO HOUSE',
+  'TECHNO',
+  'INDIE',
+  'BREAKS',
+  'FLAMENCO',
+  'AMBIENT',
+  'OPEN FORMAT',
+];
 
 export const stats = [
   { value: 10, prefix: '+', suffix: '', label: 'años de experiencia DJ' },
