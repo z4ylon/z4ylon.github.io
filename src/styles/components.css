@@ -566,7 +566,7 @@
   inset: 0;
   z-index: -2;
 
-  background: url('/images/home-03.jpg') center / cover no-repeat;
+  background: var(--footer-bg) center / cover no-repeat;
   filter: grayscale(1);
   transform: scale(1.02);
 }
