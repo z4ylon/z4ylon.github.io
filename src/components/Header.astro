@@ -23,7 +23,7 @@ const isCurrent = (href: string) => (href === home ? path === home : path === hr
     <nav class="site-nav" aria-label="Principal">
       <ul role="list">
         {
-          nav.slice(1, -1).map((item) => (
+          nav.slice(0, -1).map((item) => (
             <li>
               <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
                 {item.label}
