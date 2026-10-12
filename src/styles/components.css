@@ -642,7 +642,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--brand-hi);
   margin-bottom: 0.9rem;
 }
 .site-footer__nav ul {
@@ -651,7 +651,7 @@
 }
 .site-footer__nav a {
   text-decoration: none;
-  color: var(--brand-hi);
+  color: var(--text-2);
   font-size: 0.95rem;
   display: inline-block;
   padding-block: 0.15rem;
