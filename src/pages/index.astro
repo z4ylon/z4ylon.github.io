@@ -116,7 +116,11 @@ const collage = [
             </div>
           ))
         }
-      </dl>
+       </dl>
+      <div class="stats-brand" data-reveal>
+        <span class="stats-brand__label">Colaboración de marca</span>
+        <span class="stats-brand__name">Martin Miller’s Gin</span>
+      </div>
     </div>
   </section>
 
@@ -486,9 +490,34 @@ const collage = [
     font-size: 0.9rem;
     color: var(--text-2);
   }
+
+  .stats-brand {
+    grid-column: 2;
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--brand-700);
+    background: var(--surface);
+  }
+
+  .stats-brand__label {
+    color: var(--text-2);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .stats-brand__name {
+    font-size: var(--step-1);
+    font-weight: 800;
+  }
+
   @media (max-width: 900px) {
-    .intro {
-      grid-template-columns: 1fr;
+    .stats-brand {
+      grid-column: 1;
     }
   }
 
