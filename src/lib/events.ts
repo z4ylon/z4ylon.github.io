@@ -104,6 +104,7 @@ export function careerStats(events: EventsData) {
   );
 
   return [
+    { value: 4000, prefix: '+', label: 'asistentes en un solo show' },
     { value: years, prefix: '', label: 'años desde el primer show registrado' },
     { value: past.length, prefix: '', label: 'shows realizados' },
     { value: cities.length, prefix: '', label: 'ciudades con actuaciones' },
