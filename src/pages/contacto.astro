@@ -88,7 +88,7 @@ const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined;
     <div class="container faq-grid">
       <div>
         <SectionHeader eyebrow="FAQs" title="¿Quieres saber más?" id="faq-title" lead="Accede a cualquier duda ya resuelta." />
-        <a class="btn btn--ghost" href={u('/faqs')}>Ver todas las FAQs <Icon name="arrowRight" /></a>
+        <a class="btn btn--primary" href={u('/faqs')}>Ver todas las FAQs <Icon name="arrowRight" /></a>
       </div>
       <FaqList items={quickFaqs} />
     </div>
