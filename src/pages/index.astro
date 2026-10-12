@@ -9,8 +9,8 @@ import AmbientVideo from '@/components/react/AmbientVideo';
 import ShowsExplorer from '@/components/react/ShowsExplorer';
 import MediaGallery from '@/components/react/MediaGallery';
 import PlaySessionButton from '@/components/react/PlaySessionButton';
-import { site, genres, stats, bio, highlights, sharedLineup, services, sessions, venues } from '@/data/site';
-import { getEvents, upcomingUrl } from '@/lib/events';
+import { site, genres, bio, highlights, sharedLineup, services, sessions, venues } from '@/data/site';
+import { getEvents, upcomingUrl, careerStats } from '@/lib/events';
 import { img, videoItem } from '@/lib/media';
 import { formatDuration } from '@/lib/player';
 import { parts, privateInfo } from '@/lib/format';
@@ -20,6 +20,7 @@ import smokePoster from '@/assets/posters/bg-smoke.jpg';
 import coverAfro from '@/assets/music/mc-afro-2026.jpg';
 
 const events = await getEvents();
+const stats = careerStats(events);
 const next = events.upcoming[0];
 const nextPriv = next ? privateInfo(next.title) : null;
 const nextLabel = next ? (nextPriv ? `Evento privado · ${nextPriv.place ?? next.city}` : `${next.venue} · ${next.city}`) : '';
@@ -110,7 +111,7 @@ const collage = [
               <dt class="stat__label">{s.label}</dt>
               <dd class="stat__value">
                 <span aria-hidden="true"><span class="stat__prefix">{s.prefix}</span><span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span></span>
-                <span class="sr-only">Más de {s.value}</span>
+                <span class="sr-only">{s.value} {s.label}</span>
               </dd>
             </div>
           ))
