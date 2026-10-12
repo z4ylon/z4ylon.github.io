@@ -34,14 +34,22 @@ const isCurrent = (href: string) => (href === home ? path === home : path === hr
       </ul>
     </nav>
 
-    <div class="site-header__actions">
-      <a href={u('/contacto')} class="btn btn--sm site-header__cta" aria-current={isCurrent(u('/contacto')) ? 'page' : undefined}>Contratar</a>
-      <button type="button" class="menu-btn" aria-controls="mobile-nav" aria-expanded="false" data-menu-open>
-        <Icon name="menu" size={24} />
-        <span class="sr-only">Abrir menú</span>
-      </button>
-    </div>
-  </div>
+    ```astro
+<div class="site-header__actions">
+  <a
+    href={u('/contacto')}
+    class="btn btn--sm site-header__cta"
+    aria-current={isCurrent(u('/contacto')) ? 'page' : undefined}
+    style="display: inline-flex; align-items: center; justify-content: center; text-align: center;"
+  >
+    Contratar
+  </a>
+  <button type="button" class="menu-btn" aria-controls="mobile-nav" aria-expanded="false" data-menu-open>
+    <Icon name="menu" size={24} />
+    <span class="sr-only">Abrir menú</span>
+  </button>
+</div>
+</div>
 </header>
 
 <dialog id="mobile-nav" class="mobile-nav" aria-label="Menú">
