@@ -88,8 +88,6 @@ const collage = [
         <Picture src={heroPhoto} formats={['avif', 'webp']} widths={[400, 700, 1000]} sizes="(min-width: 1024px) 38vw, 70vw" alt="Z4YLON sentado en el escenario bajo luces rojas" loading="eager" layout="none" />
       </div>
     </div>
-
-    <a href="#intro" class="hero__scroll" aria-label="Ir al contenido"><span></span></a>
   </section>
 
   <Marquee items={genres} />
@@ -382,25 +380,6 @@ const collage = [
     position: absolute;
     inset: 0;
     background: linear-gradient(0deg, rgb(7 7 10 / 0.6), transparent 40%);
-  }
-  .hero__scroll {
-    position: absolute;
-    left: 50%;
-    bottom: 1.5rem;
-    translate: -50% 0;
-    width: 26px;
-    height: 42px;
-    border: 1.5px solid var(--line-strong);
-    border-radius: 999px;
-    display: grid;
-    justify-items: center;
-    padding-top: 8px;
-  }
-  .hero__scroll span {
-    width: 3px;
-    height: 8px;
-    border-radius: 2px;
-    background: var(--text);
   }
   @media (prefers-reduced-motion: no-preference) {
     .hero__scroll span {
