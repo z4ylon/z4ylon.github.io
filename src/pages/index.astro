@@ -138,7 +138,7 @@ const collage = [
   <section class="section section--tight shows-home" aria-labelledby="shows-title">
     <div class="container">
       <div class="split-header">
-        <SectionHeader eyebrow="Agenda" title="Próximos shows" id="shows-title" />
+        <SectionHeader eyebrow="Agenda" title="Próximos <span class='accent'>shows</span>" id="shows-title" />
         <a class="link-arrow" href={u('/shows')}>Archivo: {events.past.length} shows desde 2015 <Icon name="arrowRight" /></a>
       </div>
       <ShowsExplorer client:idle={{ timeout: 1500 }} variant="compact" upcoming={events.upcoming} past={[]} refreshUrl={upcomingUrl} bandsintownUrl={site.bandsintown} />
@@ -170,7 +170,7 @@ const collage = [
         }
       </div>
       <div>
-        <SectionHeader eyebrow="Trayectoria" title="Eventos destacados" id="hitos-title" />
+        <SectionHeader eyebrow="Trayectoria" title="Eventos <span class='accent'>destacados</span>" id="hitos-title" />
         <ol class="hitos__list" role="list">
           {
             highlights.map((h, i) => (
