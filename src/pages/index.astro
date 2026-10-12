@@ -104,24 +104,29 @@ const collage = [
         <p class="prose">{bio.paragraphs[0]} {bio.paragraphs[1]}</p>
         <a class="link-arrow" href={u('/press-kit#esencia')}>Conoce su historia <Icon name="arrowRight" /></a>
       </div>
-      <dl class="stats" data-reveal style="--delay:120ms">
-        {
-          stats.map((s) => (
-            <div class="stat">
-              <dt class="stat__label">{s.label}</dt>
-              <dd class="stat__value">
-                <span aria-hidden="true"><span class="stat__prefix">{s.prefix}</span><span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span></span>
-                <span class="sr-only">{s.value} {s.label}</span>
-              </dd>
-            </div>
-          ))
-        }
-       </dl>
-      <div class="stats-brand" data-reveal>
-        <span class="stats-brand__label">Colaboración de marca</span>
-        <span class="stats-brand__name">Martin Miller’s Gin</span>
-      </div>
+
+  <div class="stats" data-reveal style="--delay:120ms">
+    {
+      [
+        { value: 4000, prefix: '+', label: 'asistentes en un solo show' },
+      ].map((s) => (
+        <div class="stat">
+          <dt class="stat__label">{s.label}</dt>
+          <dd class="stat__value">
+            <span aria-hidden="true">
+              <span class="stat__prefix">{s.prefix}</span>
+              <span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span>
+            </span>
+            <span class="sr-only">{s.prefix}{s.value} {s.label}</span>
+          </dd>
+        </div>
+      ))
+    }
+    <div class="stat stat--brand">
+      <dt class="stat__label">Colaboración de marca</dt>
+      <dd class="stat__value stats-brand__name">Martin Miller’s Gin</dd>
     </div>
+  </div>
   </section>
 
   <!-- SHOWS -->
@@ -461,65 +466,75 @@ const collage = [
     justify-items: start;
   }
   .stats {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-  }
-  .stat {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    padding: clamp(1.25rem, 3vw, 2rem);
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .stat__value {
-    font-size: var(--step-4);
-    font-weight: 900;
-    font-variation-settings: 'wdth' 62;
-    line-height: 0.9;
-    display: flex;
-    font-variant-numeric: tabular-nums;
-  }
-  .stat__prefix {
-    color: var(--brand-700);
-  }
-  .stat__label {
-    font-size: 0.9rem;
-    color: var(--text-2);
-  }
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+align-self: start;
+border-top: 1px solid var(--line);
+border-left: 1px solid var(--line);
+}
 
-  .stats-brand {
-    grid-column: 2;
-    display: grid;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--brand-700);
-    background: var(--surface);
-  }
+.stat {
+display: flex;
+flex-direction: column-reverse;
+justify-content: flex-end;
+gap: 0.5rem;
+min-width: 0;
+padding: clamp(1.25rem, 3vw, 2rem);
+border-right: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+}
 
-  .stats-brand__label {
-    color: var(--text-2);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
+.stat__value {
+display: flex;
+flex-wrap: wrap;
+font-size: var(--step-4);
+font-weight: 900;
+font-variation-settings: 'wdth' 62;
+line-height: 0.95;
+font-variant-numeric: tabular-nums;
+overflow-wrap: anywhere;
+}
 
-  .stats-brand__name {
-    font-size: var(--step-1);
-    font-weight: 800;
-  }
+.stat__prefix {
+color: var(--brand-700);
+}
 
-  @media (max-width: 900px) {
-    .stats-brand {
-      grid-column: 1;
-    }
-  }
+.stat__label {
+font-size: 0.9rem;
+color: var(--text-2);
+}
+
+.stat--brand .stat__value {
+font-size: var(--step-1);
+line-height: 1.2;
+overflow-wrap: normal;
+}
+
+@media (max-width: 900px) {
+.stats {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+
+@media (max-width: 480px) {
+.stat {
+padding: 1rem;
+}
+
+.stat__value {
+  font-size: var(--step-3);
+}
+
+.stat--brand .stat__value {
+  font-size: 1rem;
+}
+
+.stat__label {
+  font-size: 0.8rem;
+}
+
+}
+
 
   /* SHOWS HOME */
   .split-header {
