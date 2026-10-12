@@ -651,7 +651,7 @@
 }
 .site-footer__nav a {
   text-decoration: none;
-  color: var(--text);
+  color: var(--brand-hi);
   font-size: 0.95rem;
   display: inline-block;
   padding-block: 0.15rem;
