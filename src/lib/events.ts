@@ -81,3 +81,32 @@ export function cityStats(events: ShowEvent[]) {
   }
   return [...map.entries()].map(([city, count]) => ({ city, count })).sort((a, b) => b.count - a.count);
 }
+
+
+/** Indicadores de trayectoria calculados a partir del archivo de eventos. */
+export function careerStats(events: EventsData) {
+  const past = events.past;
+
+  const yearsRecorded = past
+    .map((e) => Number(e.date.slice(0, 4)))
+    .filter((year) => Number.isFinite(year) && year > 0);
+
+  const firstYear = yearsRecorded.length ? Math.min(...yearsRecorded) : null;
+  const years = firstYear === null ? 0 : new Date().getFullYear() - firstYear;
+
+  const cities = cityStats(past).filter((c) => c.city !== 'Online');
+
+  const venues = new Set(
+    past
+      .filter((e) => !/evento privado/i.test(`${e.title} ${e.venue}`))
+      .map((e) => e.venue.trim().toLowerCase())
+      .filter(Boolean),
+  );
+
+  return [
+    { value: years, prefix: '', label: 'años desde el primer show registrado' },
+    { value: past.length, prefix: '', label: 'shows realizados' },
+    { value: cities.length, prefix: '', label: 'ciudades con actuaciones' },
+    { value: venues.size, prefix: '', label: 'espacios registrados' },
+  ];
+}
