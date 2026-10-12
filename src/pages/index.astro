@@ -95,6 +95,7 @@ const collage = [
   <Marquee items={genres} />
 
   <!-- INTRO + STATS -->
+
   <section class="section" id="intro" aria-labelledby="intro-title">
     <div class="container intro">
       <div class="intro__text" data-reveal>
@@ -108,6 +109,7 @@ const collage = [
   <div class="stats" data-reveal style="--delay:120ms">
     {
       [
+        ...stats,
         { value: 4000, prefix: '+', label: 'asistentes en un solo show' },
       ].map((s) => (
         <div class="stat">
@@ -122,12 +124,16 @@ const collage = [
         </div>
       ))
     }
+
     <div class="stat stat--brand">
       <dt class="stat__label">Colaboración de marca</dt>
       <dd class="stat__value stats-brand__name">Martin Miller’s Gin</dd>
     </div>
   </div>
+</div>
+
   </section>
+
 
   <!-- SHOWS -->
   <section class="section section--tight shows-home" aria-labelledby="shows-title">
