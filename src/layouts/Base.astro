@@ -89,7 +89,6 @@ const ld = [artistLd, ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [
     </script>
   </head>
   <body data-hero-overlap={heroOverlap || undefined}>
-    <a class="skip-link" href="#main">Saltar al contenido</a>
     <Header overlap={heroOverlap} />
     <main id="main" tabindex="-1">
       <slot />
