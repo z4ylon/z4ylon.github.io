@@ -94,42 +94,40 @@ const collage = [
 
   <!-- INTRO + STATS -->
 
-  <section class="section" id="intro" aria-labelledby="intro-title">
-    <div class="container intro">
-      <div class="intro__text" data-reveal>
-        <p class="eyebrow">Esencia</p>
-        <h2 class="h2" id="intro-title">Shows que forman parte del <span class="accent">ocio nocturno</span></h2>
-        <p class="lead">{bio.lead}</p>
-        <p class="prose">{bio.paragraphs[0]} {bio.paragraphs[1]}</p>
-        <a class="link-arrow" href={u('/press-kit#esencia')}>Conoce su historia <Icon name="arrowRight" /></a>
-      </div>
-
-  <div class="stats" data-reveal style="--delay:120ms">
-    {
-      [
-        ...stats,
-      ].map((s) => (
-        <div class="stat">
-          <dt class="stat__label">{s.label}</dt>
-          <dd class="stat__value">
-            <span aria-hidden="true">
-              <span class="stat__prefix">{s.prefix}</span>
-              <span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span>
-            </span>
-            <span class="sr-only">{s.prefix}{s.value} {s.label}</span>
-          </dd>
-        </div>
-      ))
-    }
-
-    <div class="stat stat--brand">
-      <dt class="stat__label">Colaboración de marca</dt>
-      <dd class="stat__value stats-brand__name">Martin Miller’s Gin</dd>
+<section class="section" id="intro" aria-labelledby="intro-title">
+  <div class="container intro">
+    <div class="intro__text" data-reveal>
+      <p class="eyebrow">Esencia</p>
+      <h2 class="h2" id="intro-title">Shows que forman parte del <span class="accent">ocio nocturno</span></h2>
+      <p class="lead">{bio.lead}</p>
+      <p class="prose">{bio.paragraphs[0]} {bio.paragraphs[1]}</p>
     </div>
-  </div>
-</div>
 
-  </section>
+    <div class="stats" data-reveal style="--delay:120ms">
+      {
+        [...stats].map((s) => (
+          <div class="stat">
+            <dt class="stat__label">{s.label}</dt>
+            <dd class="stat__value">
+              <span aria-hidden="true">
+                <span class="stat__prefix">{s.prefix}</span>
+                <span data-count={s.value}>{new Intl.NumberFormat('es-ES').format(s.value)}</span>
+              </span>
+              <span class="sr-only">{s.prefix}{s.value} {s.label}</span>
+            </dd>
+          </div>
+        ))
+      }
+
+      <div class="stat stat--brand">
+        <dt class="stat__label">Colaboración de marca</dt>
+        <dd class="stat__value stats-brand__name">Martin Miller’s Gin</dd>
+      </div>
+    </div>
+
+    <a class="link-arrow intro__link" href={u('/press-kit#esencia')}>Conoce su historia <Icon name="arrowRight" /></a>
+  </div>
+</section>
 
 
   <!-- SHOWS -->
