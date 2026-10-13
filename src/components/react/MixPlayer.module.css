@@ -253,8 +253,9 @@
 }
 @media (max-width: 480px) {
   .fab {
-    left: 1rem;
+    left: 50%;
     right: auto;
+    transform: translateX(-50%);
   }
   .cover {
     width: 44px;
