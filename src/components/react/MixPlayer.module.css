@@ -251,12 +251,17 @@
     display: none;
   }
 }
+
 @media (max-width: 480px) {
   .fab {
     left: 50%;
     right: auto;
+    width: min(340px, calc(100vw - 2rem));
+    max-width: none;
+    box-sizing: border-box;
     transform: translateX(-50%);
   }
+
   .cover {
     width: 44px;
     height: 44px;
