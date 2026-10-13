@@ -182,8 +182,13 @@
 .social-row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 0.35rem;
+  list-style: none;
+  padding: 0;
 }
+
 .social-row a {
   width: 44px;
   height: 44px;
@@ -201,6 +206,30 @@
   color: #fff;
   background: var(--brand);
   border-color: var(--brand);
+}
+
+@media (max-width: 480px) {
+  .social-row {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .social-row a {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .social-row svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mobile-nav__foot .social-row {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ───────────── Section header ───────────── */
