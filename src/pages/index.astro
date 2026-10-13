@@ -519,23 +519,26 @@ grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (max-width: 480px) {
-.stat {
-padding: 1rem;
-}
+  .stats {
+    grid-template-columns: 1fr;
+  }
 
-.stat__value {
-  font-size: var(--step-3);
-}
+  .stat {
+    padding: 1rem;
+  }
 
-.stat--brand .stat__value {
-  min-height: 2.5em;
-  font-size: 1rem;
-}
+  .stat__value {
+    font-size: var(--step-3);
+  }
 
-.stat__label {
-  font-size: 0.8rem;
-}
+  .stat--brand .stat__value {
+    min-height: 2.5em;
+    font-size: 1rem;
+  }
 
+  .stat__label {
+    font-size: 0.8rem;
+  }
 }
 
 
