@@ -305,23 +305,73 @@ const trajectoryStats = careerStats(eventsData);
     height: auto;
   }
   
-/* HITOS · MISMO DISEÑO QUE ESENCIA */
+
+/* HITOS · TRAYECTORIA */
 .stats--trajectory {
+  display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-self: start;
   margin-top: 0;
   margin-bottom: var(--space-l);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
 .stats--trajectory .stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
   min-width: 0;
   padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  text-align: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.stats--trajectory .stat__label {
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  text-align: center;
 }
 
 .stats--trajectory .stat__value {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: var(--step-4);
+  font-weight: 900;
+  font-variation-settings: 'wdth' 62;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.stats--trajectory .stat__value > span[aria-hidden="true"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stats--trajectory .stat__prefix {
+  color: var(--brand-700);
+}
+
+.stats--trajectory .stat--brand {
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .stats--trajectory .stat--brand .stat__value {
+  align-items: center;
+  min-height: 2.5em;
+  font-size: var(--step-1);
+  line-height: 1.2;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
@@ -334,24 +384,27 @@ const trajectoryStats = careerStats(eventsData);
 @media (max-width: 480px) {
   .stats--trajectory {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    position: static;
-    margin-top: 0;
   }
 
   .stats--trajectory .stat {
     padding: 1rem 0.5rem;
+    gap: 0.2rem;
   }
 
   .stats--trajectory .stat__value {
+    min-height: 2.5rem;
     font-size: var(--step-3);
+    line-height: 1;
   }
 
   .stats--trajectory .stat__label {
     font-size: 0.7rem;
+    line-height: 1.15;
   }
 
   .stats--trajectory .stat--brand .stat__value {
     font-size: 0.75rem;
+    line-height: 1.1;
   }
 }
   .hitos-cols {
