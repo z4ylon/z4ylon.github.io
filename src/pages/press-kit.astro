@@ -339,25 +339,27 @@ const trajectoryStats = careerStats(eventsData);
   text-align: center;
 }
 
+
 .stats--trajectory .stat__value {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-width: 0;
   font-size: var(--step-4);
   font-weight: 900;
   font-variation-settings: 'wdth' 62;
   line-height: 0.95;
   font-variant-numeric: tabular-nums;
-  overflow-wrap: normal;
   white-space: nowrap;
 }
 
 .stats--trajectory .stat__value > span[aria-hidden="true"] {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .stats--trajectory .stat__prefix {
