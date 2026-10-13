@@ -310,6 +310,8 @@ const trajectoryStats = careerStats(eventsData);
 .stats--trajectory {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  width: 100%;
+  min-width: 0;
   align-self: start;
   margin-top: 0;
   margin-bottom: var(--space-l);
@@ -324,7 +326,7 @@ const trajectoryStats = careerStats(eventsData);
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
-  padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  padding: clamp(0.5rem, 1vw, 1rem);
   text-align: center;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -348,7 +350,8 @@ const trajectoryStats = careerStats(eventsData);
   font-variation-settings: 'wdth' 62;
   line-height: 0.95;
   font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .stats--trajectory .stat__value > span[aria-hidden="true"] {
