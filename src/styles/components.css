@@ -719,4 +719,20 @@
   .site-footer__grid {
     grid-template-columns: 1fr;
   }
+
+@media (max-width: 480px) {
+  .site-footer__socials {
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+
+  .site-footer__socials a {
+    width: 34px;
+    height: 34px;
+  }
+
+  .site-footer__socials svg {
+    width: 16px;
+    height: 16px;
+  }
 }
