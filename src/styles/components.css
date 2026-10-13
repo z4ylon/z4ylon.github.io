@@ -763,6 +763,7 @@
   .site-footer__grid {
     grid-template-columns: 1fr;
   }
+}
 
 @media (max-width: 480px) {
   .site-footer__socials {
