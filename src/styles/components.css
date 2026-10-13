@@ -171,7 +171,6 @@
   color: var(--brand-hi);
 }
 
-
 .mobile-nav__foot {
   flex: 1;
   display: flex;
@@ -185,10 +184,13 @@
 
 .mobile-nav__foot > .btn {
   align-self: center;
+  margin-block: auto;
 }
 
 .mobile-nav__foot > .social-row {
-  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+  margin-top: 0;
   flex-shrink: 0;
 }
 
