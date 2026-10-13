@@ -6,7 +6,8 @@ import PageHero from '@/components/PageHero.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import Icon from '@/components/Icon.astro';
 import MediaGallery from '@/components/react/MediaGallery';
-import { site, bio, stats, highlights, residencies, equipment, rider, brandGuidelines, brands, flyerCaptions } from '@/data/site';
+import { site, bio, highlights, residencies, equipment, rider, brandGuidelines, brands, flyerCaptions } from '@/data/site';
+import { getEvents, careerStats } from '@/lib/events';
 import { img, imageItem } from '@/lib/media';
 
 const dossierTitles = ['Portada', 'All in one', 'Esencia', 'Hitos', 'Música', 'Marca', 'Diseño', 'Media', 'Equipo', 'Rider', 'FAQs', 'Social y contacto', 'Contraportada'];
@@ -37,7 +38,8 @@ const brandAssets = [
   { label: 'Logo completo (PNG transparente)', src: img('brand/logo-full.png'), file: u('/press/z4ylon-logo.png') },
   { label: 'Isotipo 3D (PNG transparente)', src: img('brand/isotipo-3d.png'), file: u('/press/z4ylon-isotipo.png') },
 ];
----
+const eventsData = await getEvents();
+const trajectoryStats = careerStats(eventsData);
 
 <Base title="Press kit" description="Press kit oficial de Z4YLON: biografía, hitos, dossier 2026 en PDF, fotos de prensa en alta resolución, flyers, equipo, rider técnico y guía de uso de marca.">
   <PageHero
