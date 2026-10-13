@@ -170,13 +170,24 @@
 .mobile-nav__links a[aria-current='page'] {
   color: var(--brand-hi);
 }
+
 .mobile-nav__foot {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   padding-block: 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+.mobile-nav__foot > .btn {
+  align-self: center;
+}
+
+.mobile-nav__foot > .social-row {
+  width: 100%;
+  justify-content: center;
 }
 
 .social-row {
